@@ -1,2 +1,2 @@
-# wow-stats
+# wow-site
 World of Warcraft statistics.

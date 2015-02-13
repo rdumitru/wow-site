@@ -11,7 +11,7 @@
                 url: '/home',
                 templateUrl: '/app/components/home/homeView.html',
                 controller: 'HomeController',
-                controllerAs: 'ctrl',
+                controllerAs: 'vm',
                 title: 'Home',
                 bodyCss: "home"
             });

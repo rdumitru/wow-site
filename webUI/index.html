@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
 
 <head lang="en">
     <meta charset="UTF-8">
-    <title>WoW Stats</title>
 
-    <!-- Include local angular scripts. -->
+    <!-- Include references. -->
     <!--#include file="references.html" -->
+
+    <title ng-bind="title"></title>
 </head>
 
-<body>
+<body class="{{bodyCss ? 'page-' + bodyCss : 'page-default'}}">
 
 <ui-view name="nav"></ui-view>
 <ui-view></ui-view>
