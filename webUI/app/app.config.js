@@ -35,7 +35,6 @@
 
     app.run(['$rootScope', function ($rootScope) {
         $rootScope.$on('$stateChangeSuccess', function(event, current) {
-            debugger;
             $rootScope.title = current.title;
             $rootScope.bodyCss = current.bodyCss;
         });
