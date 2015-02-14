@@ -15,17 +15,17 @@
                 abstract: true,
                 views: {
                     nav: {
-                        templateUrl: '/app/shared/app_layout/nav.html',
+                        templateUrl: '/app/shared/app_layout/navView.html',
                         controller: 'NavController',
                         controllerAs: 'vm'
                     },
                     '': {
-                        templateUrl: '/app/shared/app_layout/content.html',
+                        templateUrl: '/app/shared/app_layout/contentView.html',
                         controller: 'ContentController',
                         controllerAs: 'vm'
                     },
                     footer: {
-                        templateUrl: '/app/shared/app_layout/footer.html',
+                        templateUrl: '/app/shared/app_layout/footerView.html',
                         controller: 'FooterController',
                         controllerAs: 'vm'
                     }

@@ -3,15 +3,15 @@
 
     angular.module('app').controller('NavController', NavController);
 
-    NavController.$inject = [];
+    NavController.$inject = ['logger'];
 
-    function NavController() {
+    function NavController(logger) {
         var vm = this;
 
         init();
 
         function init() {
-
+            logger.log(NavController, init, 'Initializing...');
         }
 
     }

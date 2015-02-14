@@ -3,15 +3,15 @@
 
     angular.module('app.home').controller('HomeController', HomeController);
 
-    HomeController.$inject = [];
+    HomeController.$inject = ['logger'];
 
-    function HomeController() {
+    function HomeController(logger) {
         var vm = this;
 
         init();
 
         function init() {
-
+            logger.log(HomeController, init, 'Initializing...');
         }
 
     }

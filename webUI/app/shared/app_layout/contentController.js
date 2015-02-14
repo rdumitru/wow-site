@@ -3,14 +3,15 @@
 
     angular.module('app').controller('ContentController', ContentController);
 
-    ContentController.$inject = [];
+    ContentController.$inject = ['logger'];
 
-    function ContentController() {
+    function ContentController(logger) {
         var vm = this;
 
         init();
 
         function init() {
+            logger.log(ContentController, init, 'Initializing...');
         }
 
     }

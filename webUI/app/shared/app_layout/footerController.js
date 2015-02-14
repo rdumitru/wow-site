@@ -3,14 +3,15 @@
 
     angular.module('app').controller('FooterController', FooterController);
 
-    FooterController.$inject = [];
+    FooterController.$inject = ['logger'];
 
-    function FooterController() {
+    function FooterController(logger) {
         var vm = this;
 
         init();
 
         function init() {
+            logger.log(FooterController, init, 'Initializing...');
         }
 
     }
