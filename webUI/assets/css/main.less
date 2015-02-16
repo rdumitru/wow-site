@@ -2,8 +2,6 @@
 // Includes.
 //==============================================================================
 @import "darkly/bootstrap.min.css";
-@import "darkly/variables";
-
 @import "partials/variables";
 
 //==============================================================================
@@ -14,10 +12,24 @@
   padding: 0;
 }
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 body {
-  margin: 0;
-  padding: 60px 0 0 0; // Keep padding-top as the height of the nav bar.
+  margin: 0 ;
+  padding-top: @navbar-height + @navbar-margin-bottom; // See nav.
+  padding-bottom: @navbar-height; // See footer.
   background: black url("/assets/img/bg/horde_vs_alliance.jpg") fixed center top;
+}
+
+#footer {
+  bottom: 0;
+  height: @navbar-height;
+  margin-bottom: 0;
+  position: absolute;
+  width: 100%;
 }
 
 //==============================================================================
