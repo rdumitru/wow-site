@@ -24,6 +24,11 @@
                         controller: 'ContentController',
                         controllerAs: 'vm'
                     },
+                    sidebar: {
+                        templateUrl: '/app/shared/app_layout/sidebarView.html',
+                        controller: 'SidebarController',
+                        controllerAs: 'vm'
+                    },
                     footer: {
                         templateUrl: '/app/shared/app_layout/footerView.html',
                         controller: 'FooterController',
@@ -33,6 +38,7 @@
             });
     }
 
+    // Add extra properties to each state.
     app.run(['$rootScope', function ($rootScope) {
         $rootScope.$on('$stateChangeSuccess', function(event, current) {
             $rootScope.title = current.title;

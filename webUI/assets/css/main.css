@@ -21,11 +21,8 @@ body {
   width: 100%;
 }
 .navbar-default {
-  background-color: rgba(34, 34, 34, 0.92);
+  background-color: rgba(24, 24, 24, 0.9);
 }
-.panel-default {
-  background-color: rgba(48, 48, 48, 0.92);
-}
-.well {
-  background-color: rgba(48, 48, 48, 0.92);
+.panel {
+  background-color: rgba(40, 40, 40, 0.9);
 }
