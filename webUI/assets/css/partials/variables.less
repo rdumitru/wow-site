@@ -10,7 +10,7 @@
 //-------------------------------------
 // Reference vars.
 //-------------------------------------
-@darken-step: 5%;
+@color-op-step: 10%;
 
 //-------------------------------------
 // Class colors.
@@ -33,10 +33,10 @@
 @wod-red:         #A02708;
 @wod-orange:      #F1A863;
 @wod-garnet:      #75281E;
-@wod-garnet-dark: darken(@wod-garnet, @darken-step);
+@wod-garnet-dark: darken(@wod-garnet, @color-op-step);
 @wod-lime:        #A0CE6C;
 @wod-brown:       #442F2C;
-@wod-brown-dark:  darken(@wod-brown, @darken-step);
+@wod-brown-dark:  darken(@wod-brown, @color-op-step);
 
 //-------------------------------------
 // Alliance palette.
@@ -58,6 +58,13 @@
 @horde-brown:       #4B443C;
 @horde-brown-dark:  #3A302E;
 
+//-------------------------------------
+// Wowhead theme.
+//-------------------------------------
+@wowhead-yellow:      #FFD100;
+@wowhead-orange:      #F87114;
+@wowhead-red:         #A71A19;
+@wowhead-blue-light:  #16B6FF;
 
 //-------------------------------------
 // Item quality palette.
@@ -72,18 +79,21 @@
 @item-heirloom:   #E6CC80;
 
 //-------------------------------------
-// Website theme.
+// Theme.
 //-------------------------------------
-//@theme-grey-base:     #1B1B1B;
-//@theme-step:          #080808;
-//@theme-grey-dark-1:   @theme-grey-base;
-//@theme-grey-dark-2:   @theme-grey-base + (1 * @theme-step);
-//@theme-grey-dark-3:   @theme-grey-base + (2 * @theme-step);
-//@theme-grey-1:        @theme-grey-base + (10 * @theme-step);
-//@theme-grey-2:        @theme-grey-base + (15 * @theme-step);
-//@theme-grey-3:        @theme-grey-base + (20 * @theme-step);
+@nav-color: fade(@gray-darkest, @transparent);
+@panel-color: fade(@gray-darker, @transparent-semi);
+
+//-------------------------------------
+// Default values.
+//-------------------------------------
+@padding-default: 16px;
+@padding-y: @padding-default;
+@padding-x: @padding-default;
 
 //-------------------------------------
 // Transparency.
 //-------------------------------------
-@default-transparency: 90%;
+@transparent:       90%;
+@transparent-semi:  95%;
+

@@ -18,27 +18,56 @@ html {
 }
 
 body {
-  margin: 0 ;
-  padding-top: @navbar-height + @navbar-margin-bottom; // See nav.
-  padding-bottom: @navbar-height; // See footer.
   background: black url("/assets/img/bg/horde_vs_alliance.jpg") fixed center top;
+  margin: 0 ;
+  padding-top: @navbar-height + @navbar-margin-bottom;  // See nav.
+  // 'padding-bottom' must always be set to the #footer height (see jQuery file).
 }
 
+//==============================================================================
+// Main page components.
+//==============================================================================
 #footer {
+
   bottom: 0;
-  height: @navbar-height;
+  background-color: @nav-color;
   margin-bottom: 0;
+  clear: both;
   position: absolute;
   width: 100%;
 }
 
 //==============================================================================
-// Bootstrap.
+// Document sections.
+//==============================================================================
+h1, h2, h3, h4, h5, h6 {
+  color: darken(@class-druid, @color-op-step);
+}
+
+//==============================================================================
+// Default layout classes.
+//==============================================================================
+.padding-all {
+  padding: @padding-default;
+}
+
+.padding-y {
+  padding-bottom: @padding-y;
+  padding-top: @padding-y;
+}
+
+.padding-x {
+  padding-left: @padding-x;
+  padding-right: @padding-x;
+}
+
+//==============================================================================
+// Bootstrap overrides.
 //==============================================================================
 .navbar-default {
-  background-color: fade(@gray-darker, @default-transparency);
+  background-color: @nav-color;
 }
 
 .panel {
-  background-color: fade(@gray-dark, @default-transparency);
+  background-color: @panel-color;
 }

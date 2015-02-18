@@ -8,12 +8,16 @@
 //## Gray and brand colors for use across Bootstrap.
 
 @gray-base:              #000;
-@gray-darker:            #181818;
-@gray-dark:              #282828;   // #333
-@gray:                   #404040;
-@gray-light:             #808080;   // #999
-@gray-lighter:           #E0E0E0; // #eee
+@gray-darkest:           #181818;
+@gray-darker:            #222222;
+@gray-dark:              #282828;
+@gray:                   #484848;
+@gray-light:             #808080;
+@gray-lighter:           #E0E0E0;
 
+//---------------------------------------
+// TODO: Import these from my vars file.
+//---------------------------------------
 @class-dk:      #C41F3B;
 @class-druid:   #FF7D0A;
 @class-hunter:  #ABD473;
@@ -26,13 +30,14 @@
 @class-warlock: #9482C9;
 @class-warrior: #C79C6E;
 
-@desaturate-percentage: 10%;
+@color-op-step: 10%;
+//---------------------------------------
 
-@brand-primary:   darken(@class-shaman, @desaturate-percentage);
-@brand-success:   darken(@class-hunter, @desaturate-percentage);
-@brand-info:      darken(@class-mage, @desaturate-percentage);
-@brand-warning:   darken(@class-druid, @desaturate-percentage);
-@brand-danger:    darken(@class-dk, @desaturate-percentage);
+@brand-primary:   darken(@class-shaman, @color-op-step);
+@brand-success:   darken(@class-hunter, @color-op-step);
+@brand-info:      darken(@class-mage, @color-op-step);
+@brand-warning:   darken(@class-druid, @color-op-step);
+@brand-danger:    darken(@class-dk, @color-op-step);
 
 
 //== Scaffolding
@@ -40,9 +45,9 @@
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               @gray-darker;
+@body-bg:               @gray-darkest;
 //** Global text color on `<body>`.
-@text-color:            #fff;
+@text-color:            @gray-lighter;
 
 //** Global textual link color.
 @link-color:            desaturate(lighten(@brand-success, 10%),10%);
@@ -82,7 +87,7 @@
 @headings-font-family:    @font-family-base;
 @headings-font-weight:    400;
 @headings-line-height:    1.1;
-@headings-color:          inherit;
+@headings-color:          #fff;
 
 
 //== Iconography
@@ -502,19 +507,19 @@
 
 @state-success-text:             #fff;
 @state-success-bg:               @brand-success;
-@state-success-border:           @brand-success;
+@state-success-border:           darken(@brand-success, @color-op-step);
 
 @state-info-text:                #fff;
 @state-info-bg:                  @brand-info;
-@state-info-border:              @brand-info;
+@state-info-border:              darken(@brand-info, @color-op-step);
 
 @state-warning-text:             #fff;
 @state-warning-bg:               @brand-warning;
-@state-warning-border:           @brand-warning;
+@state-warning-border:           darken(@brand-warning, @color-op-step);
 
 @state-danger-text:              #fff;
 @state-danger-bg:                @brand-danger;
-@state-danger-border:            @brand-danger;
+@state-danger-border:            darken(@brand-danger, @color-op-step);
 
 
 //== Tooltips
@@ -717,11 +722,11 @@
 @panel-footer-bg:             @gray;
 
 @panel-default-text:          @text-color;
-@panel-default-border:        @gray;
+@panel-default-border:        darken(@gray, @color-op-step);
 @panel-default-heading-bg:    @gray-dark;
 
 @panel-primary-text:          #fff;
-@panel-primary-border:        @brand-primary;
+@panel-primary-border:        darken(@brand-primary, @color-op-step);
 @panel-primary-heading-bg:    @brand-primary;
 
 @panel-success-text:          @state-success-text;
@@ -765,7 +770,7 @@
 //##
 
 @well-bg:                     @gray-dark;
-@well-border:                 transparent;
+@well-border:                 @gray;
 
 
 //== Badges
