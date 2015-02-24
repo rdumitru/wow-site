@@ -45,3 +45,11 @@ h6 {
 .panel {
   background-color: rgba(34, 34, 34, 0.95);
 }
+.jumbotron {
+  background-color: rgba(34, 34, 34, 0.95);
+}
+.panel .well:last-of-type,
+.panel blockquote:last-of-type,
+.well blockquote:last-of-type {
+  margin-bottom: 0;
+}
