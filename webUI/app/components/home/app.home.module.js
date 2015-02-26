@@ -2,7 +2,8 @@
     'use strict';
 
     angular.module('app.home', [
-        'app.providers'
+        'app.providers',
+        'app.services'
     ]);
 
 })();

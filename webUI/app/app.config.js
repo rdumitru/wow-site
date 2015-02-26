@@ -40,7 +40,7 @@
 
     // Add extra properties to each state.
     app.run(['$rootScope', function ($rootScope) {
-        $rootScope.$on('$stateChangeSuccess', function(event, current) {
+        $rootScope.$on('$stateChangeSuccess', function (event, current) {
             $rootScope.title = current.title;
             $rootScope.bodyCss = current.bodyCss;
         });

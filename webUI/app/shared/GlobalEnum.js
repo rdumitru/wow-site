@@ -13,50 +13,77 @@
     //=========================================================================
 
     app.constant(
-        'GlobalEnum', {
-            GameMode: {
-                PVE: {
+        'globalEnum', {
+            gameMode: {
+                PvE: {
                     val: Math.pow(2, 0),
-                    enumVal: 'PVE',
+                    enumVal: 'PvE',
                     display: 'PvE'
                 },
-                PVP: {
+                PvP: {
                     val: Math.pow(2, 1),
-                    enumVal: 'PVP',
+                    enumVal: 'PvP',
                     display: 'PvP'
                 }
             },
 
-            RankListType: {
-                PLAYERS: {
+            rankListType: {
+                Players: {
                     val: Math.pow(2, 0),
-                    enumVal: 'PLAYERS',
+                    enumVal: 'Players',
                     display: 'Players'
                 },
-                SPECS: {
+                Specs: {
                     val: Math.pow(2, 1),
-                    enumVal: 'SPECS',
+                    enumVal: 'Specs',
                     display: 'Specs'
                 },
-                RACES: {
+                Races: {
                     val: Math.pow(2, 2),
-                    enumVal: 'RACES',
+                    enumVal: 'Races',
                     display: 'Races'
                 },
-                GUILDS: {
+                Guilds: {
                     val: Math.pow(2, 3),
-                    enumVal: 'GUILDS',
+                    enumVal: 'Guilds',
                     display: 'Guilds'
                 },
-                ACHIEVEMENTS: {
+                Achievements: {
                     val: Math.pow(2, 4),
-                    enumVal: 'ACHIEVEMENTS',
+                    enumVal: 'Achievements',
                     display: 'Achievements'
                 },
-                MOUNTS: {
+                Mounts: {
                     val: Math.pow(2, 5),
-                    enumVal: 'MOUNTS',
+                    enumVal: 'Mounts',
                     display: 'Mounts'
+                }
+            },
+
+            pvpBracket: {
+                TwoVsTwo: {
+                    val: Math.pow(2, 0),
+                    enumVal: '2v2',
+                    display: '2v2',
+                    longDisplay: 'Arena 2v2'
+                },
+                ThreeVsThree: {
+                    val: Math.pow(2, 1),
+                    enumVal: '3v3',
+                    display: '3v3',
+                    longDisplay: 'Arena 3v3'
+                },
+                FiveVsFive: {
+                    val: Math.pow(2, 2),
+                    enumVal: '5v5',
+                    display: '5v5',
+                    longDisplay: 'Arena 5v5'
+                },
+                Rbg: {
+                    val: Math.pow(2, 3),
+                    enumVal: 'rbg',
+                    display: 'Rbg',
+                    longDisplay: 'Rated Battlegrounds'
                 }
             }
         }
