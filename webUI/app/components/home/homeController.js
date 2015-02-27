@@ -13,11 +13,12 @@
         function init() {
             logger.log(HomeController, init, 'Initializing...');
 
-            debugger;
             vm.link = iconProvider.iconLink('inv_fabric_netherweave_bolt', 56);
-            wowService.getPvpLeaderboard(globalEnum.pvpBracket.Rbg)
+
+            wowService.getRaces()
                 .then(function (data) {
                     debugger;
+                    alert('It worked!');
                 });
         }
 
