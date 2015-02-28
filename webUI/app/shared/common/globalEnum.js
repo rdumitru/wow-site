@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var app = angular.module('app');
+    var appCommon = angular.module('app.common');
 
     //=========================================================================
     // Global enums.
@@ -12,7 +12,7 @@
     //   - display
     //=========================================================================
 
-    app.constant(
+    appCommon.constant(
         'globalEnum', {
             region: {
                 EU: {

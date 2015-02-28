@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('app').factory('api', Api);
+    angular.module('app.common').factory('api', Api);
 
     Api.$inject = [];
 

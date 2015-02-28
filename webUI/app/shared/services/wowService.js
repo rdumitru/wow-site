@@ -18,7 +18,7 @@
         }
 
         function getPvpLeaderboard(pvpBracket, region) {
-            return bnetRequest(api.route(api.wow.pvp.leaderboard, {pvpBracket: pvpBracket.enumVal}));
+            return bnetRequest(api.route(api.wow.pvp.leaderboard, {pvpBracket: pvpBracket.enumVal}), region);
         }
 
         //=====================================================================
@@ -33,7 +33,7 @@
             return globalConstants.BNET_ROOT_EU;
         }
 
-        function bnetRequest (path, params, region) {
+        function bnetRequest (path, region, params) {
             var rootUrl = getRootUrl(region);
 
             params = params || {};
