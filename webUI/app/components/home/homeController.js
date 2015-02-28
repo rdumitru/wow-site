@@ -20,11 +20,10 @@
                     alert(response.data.races[0].name);
                 });
 
-            // debugger;
-            var perhapsEmpty = cache.load('test');
-            var empty = cache.load('empty');
-            cache.store('test', { test: 'Remus test.' });
-            var b = cache.load('test');
+            wowService.getClasses()
+                .then(function (response) {
+                    alert(response.data.classes[0].name);
+                });
         }
     }
 })();

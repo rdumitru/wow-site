@@ -6,12 +6,12 @@
     Cache.$inject = ['globalConstants', 'logger'];
 
     function Cache(globalConstants, logger) {
-        //==============================================================================================================
+        //=====================================================================
         // Exposed functions.
-        //==============================================================================================================
+        //=====================================================================
         function store(key, obj) {
             if (!key) {
-                logger.log(Cache, store, 'Key not provided.');
+                logger.error(Cache, store, 'Key not provided.');
                 return;
             }
 
@@ -23,7 +23,7 @@
 
         function load(key) {
             if (!key) {
-                logger.log(Cache, load, 'Key not provided.');
+                logger.error(Cache, load, 'Key not provided.');
                 return;
             }
 
@@ -34,7 +34,7 @@
             // Check if the item has expired.
             var objMoment = moment(obj.timestamp);
             var nowMoment = moment();
-
+            
             if (nowMoment.diff(objMoment, 'minutes') >= globalConstants.CACHE_MINUTES) {
                 return null;
             }
@@ -46,9 +46,9 @@
             return cloneObj;
         }
 
-        //==============================================================================================================
+        //=====================================================================
         // Expose functions.
-        //==============================================================================================================
+        //=====================================================================
         return {
             store: store,
             load : load
