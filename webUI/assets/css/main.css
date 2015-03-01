@@ -28,6 +28,12 @@ h5,
 h6 {
   color: #d66400;
 }
+td {
+  vertical-align: baseline;
+}
+td img {
+  vertical-align: text-bottom;
+}
 .padding-all {
   padding: 16px;
 }
@@ -43,13 +49,11 @@ h6 {
   background-color: rgba(24, 24, 24, 0.9);
 }
 .panel {
-  background-color: rgba(34, 34, 34, 0.95);
+  background-color: #222222;
 }
 .jumbotron {
-  background-color: rgba(34, 34, 34, 0.95);
+  background-color: #222222;
 }
-.panel .well:last-of-type,
-.panel blockquote:last-of-type,
-.well blockquote:last-of-type {
-  margin-bottom: 0;
+.pvp-rankings .pagination {
+  margin: 0;
 }

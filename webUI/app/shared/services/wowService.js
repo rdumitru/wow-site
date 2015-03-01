@@ -77,7 +77,7 @@
         }
 
         function getPvpLeaderboard(pvpBracket, region) {
-            return bnetRequest(api.route(api.wow.pvp.leaderboard, {pvpBracket: pvpBracket.enumVal}), region);
+            return bnetRequest(api.route(api.wow.pvp.leaderboard, { pvpBracket: pvpBracket.enumVal }), region);
         }
 
         //=====================================================================

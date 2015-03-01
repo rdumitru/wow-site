@@ -34,7 +34,7 @@
             // Check if the item has expired.
             var objMoment = moment(obj.timestamp);
             var nowMoment = moment();
-            
+
             if (nowMoment.diff(objMoment, 'minutes') >= globalConstants.CACHE_MINUTES) {
                 return null;
             }

@@ -49,6 +49,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 //==============================================================================
+// Tables.
+//==============================================================================
+// TODO: put this nicely, add border to images.
+td {
+  vertical-align: baseline;
+}
+td img {
+  vertical-align: text-bottom;
+}
+
+//==============================================================================
 // Default layout classes.
 //==============================================================================
 .padding-all {
@@ -80,8 +91,9 @@ h1, h2, h3, h4, h5, h6 {
   background-color: @jumbo-color;
 }
 
-.panel .well:last-of-type,
-.panel blockquote:last-of-type,
-.well blockquote:last-of-type {
-  margin-bottom: 0;
+//==============================================================================
+// Rankings.
+//==============================================================================
+.pvp-rankings .pagination {
+  margin: 0;
 }

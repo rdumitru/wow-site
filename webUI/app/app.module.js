@@ -7,7 +7,8 @@
         'app.providers',
         'app.directives',
         'app.services',
-        'app.home'
+        'app.home',
+        'app.rankings'
     ]);
 
 })();
