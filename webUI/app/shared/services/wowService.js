@@ -25,9 +25,10 @@
             params = angular.extend(params, {
                 // apiKey: /* API_KEY */,
                 // locale: /* LOCALE */,
-                callback: 'JSON_CALLBACK',
+                callback: 'angular.callbacks._0',
                 jsonp: 'JSON_CALLBACK'
             });
+            // TODO: callback might need to be changed depending on when this was called.
 
             // Pay attention to this!
             if (/character/.test(path)) {
@@ -42,6 +43,7 @@
         //=====================================================================
         var classesKey = 'classes';
         var racesKey = 'races';
+        var talentsKey = 'talents';
 
         //=====================================================================
         // Public functions.
@@ -76,8 +78,24 @@
                 });
         }
 
-        function getPvpLeaderboard(pvpBracket, region) {
-            return bnetRequest(api.route(api.wow.pvp.leaderboard, { pvpBracket: pvpBracket.enumVal }), region);
+        function getTalents() {
+            var talents = cache.load(talentsKey);
+            if (talents) {
+                logger.log(WowService, getTalents, 'Retrieving from cache.');
+                return promiseProvider.promiseFromObj(talents);
+            }
+
+            logger.log(WowService, getTalents, 'Calling service.');
+            return bnetRequest(api.route(api.wow.data.talents))
+                .then(function (response) {
+                    debugger;
+                    cache.store(talentsKey, response);
+                    return response;
+                });
+        }
+
+        function getPvpLeaderboard(bracket, region) {
+            return bnetRequest(api.route(api.wow.pvp.leaderboard, { bracket: bracket.enumVal }), region);
         }
 
         //=====================================================================
@@ -86,6 +104,7 @@
         return {
             getClasses: getClasses,
             getRaces: getRaces,
+            getTalents: getTalents,
             getPvpLeaderboard: getPvpLeaderboard
         };
     }

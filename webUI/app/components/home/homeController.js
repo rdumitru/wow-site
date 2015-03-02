@@ -7,22 +7,36 @@
 
     function HomeController(logger, iconProvider, wowService, globalEnum, cache) {
         var vm = this;
+        vm.globalEnum = globalEnum;
 
         init();
 
         function init() {
             logger.log(HomeController, init, 'Initializing...');
 
-            vm.link = iconProvider.iconLink('inv_fabric_netherweave_bolt', 56);
-
             wowService.getRaces()
                 .then(function (response) {
-                    alert(response.data.races[0].name);
+                    // alert(response.data.races[0].name);
                 });
 
             wowService.getClasses()
                 .then(function (response) {
-                    alert(response.data.classes[0].name);
+                    // alert(response.data.classes[0].name);
+                });
+
+            //wowService.getPvpLeaderboard(globalEnum.bracket.TwoVsTwo, globalEnum.region.EU)
+            //    .then(function (response) {
+            //
+            //    });
+
+            iconProvider.raceIconPromise(globalEnum.race.Human.blizzId, 1, globalEnum.iconSize.Large)
+                .then(function (response) {
+
+                });
+
+            iconProvider.specIconPromise(252, globalEnum.iconSize.Large)
+                .then(function (response) {
+
                 });
         }
     }

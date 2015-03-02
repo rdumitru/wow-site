@@ -45,7 +45,7 @@ body {
 // Document sections.
 //==============================================================================
 h1, h2, h3, h4, h5, h6 {
-  color: darken(@class-druid, @color-op-step);
+  color: @header-color;
 }
 
 //==============================================================================
@@ -59,8 +59,12 @@ td img {
   vertical-align: text-bottom;
 }
 
+th {
+  color: @header-color;
+}
+
 //==============================================================================
-// Default layout classes.
+// General layout.
 //==============================================================================
 .padding-all {
   padding: @padding-default;

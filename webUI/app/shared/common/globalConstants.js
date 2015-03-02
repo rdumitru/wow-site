@@ -6,11 +6,12 @@
     //=========================================================================
     // Global constants.
     //=========================================================================
-    var blizzardMediaRoot = 'http://media.blizzard.com';
+    var blizzIconsRoot = 'http://media.blizzard.com/wow/icons';
+    var zamIconsRoot = 'http://wow.zamimg.com/images/wow/icons';
 
     var globalConstantsObj = {
-        BLIZZARD_MEDIA_ROOT: blizzardMediaRoot,
-        WOW_MEDIA_ROOT: blizzardMediaRoot + '/wow',
+        BLIZZ_ICONS_ROOT: blizzIconsRoot,
+        ZAM_ICONS_ROOT: zamIconsRoot,
         BNET_ROOT_EU: 'http://eu.battle.net',
         BNET_ROOT_US: 'http://us.battle.net',
         CACHE_MINUTES: 60

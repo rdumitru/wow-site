@@ -27,6 +27,40 @@
 @class-warlock: #9482C9;
 @class-warrior: #C79C6E;
 
+.class-dk {
+  color: @class-dk;
+}
+.class-druid {
+  color: @class-druid;
+}
+.class-hunter {
+  color: @class-hunter;
+}
+.class-mage {
+  color: @class-mage;
+}
+.class-monk {
+  color: @class-monk;
+}
+.class-paladin {
+  color: @class-paladin;
+}
+.class-priest {
+  color: @class-priest;
+}
+.class-rogue {
+  color: @class-rogue;
+}
+.class-shaman {
+  color: @class-shaman;
+}
+.class-warlock {
+  color: @class-warlock;
+}
+.class-warrior {
+  color: @class-warrior;
+}
+
 //-------------------------------------
 // Warlords of Draenor palette.
 //-------------------------------------
@@ -100,11 +134,29 @@
 @power-stagger-heavy:   #FF6B6B;
 
 //-------------------------------------
-// Theme.
+// Other colors.
+//-------------------------------------
+@change-positive: #2DD300;
+@change-negative: #DB0000;
+
+.change-positive {
+  color: @change-positive;
+}
+.change-negative {
+  color: @change-negative;
+}
+
+//-------------------------------------
+// Bootstrap components.
 //-------------------------------------
 @nav-color: fade(@gray-darkest, @transparent);
 @panel-color: @gray-darker;
 @jumbo-color: @panel-color;
+
+//-------------------------------------
+// DOM elements.
+//-------------------------------------
+@header-color: darken(@class-druid, @color-op-step);
 
 //-------------------------------------
 // Transparency.

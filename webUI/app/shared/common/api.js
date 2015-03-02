@@ -14,10 +14,11 @@
             wow: {
                 data: {
                     classes: wowDataPrefix + '/character/classes',
-                    races: wowDataPrefix + '/character/races'
+                    races: wowDataPrefix + '/character/races',
+                    talents: wowDataPrefix + '/talents'
                 },
                 pvp: {
-                    leaderboard: '/wow/leaderboard/:pvpBracket'
+                    leaderboard: '/wow/leaderboard/:bracket'
                 }
             },
             route: route
