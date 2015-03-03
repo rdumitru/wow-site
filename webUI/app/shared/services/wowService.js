@@ -7,6 +7,11 @@
 
     function WowService($http, cache, promiseProvider, globalConstants, globalEnum, api, logger) {
         //=====================================================================
+        // Local variables.
+        //=====================================================================
+        var callbackCount = 0;
+
+        //=====================================================================
         // Helper functions.
         //=====================================================================
         function getRootUrl(region) {
@@ -25,10 +30,10 @@
             params = angular.extend(params, {
                 // apiKey: /* API_KEY */,
                 // locale: /* LOCALE */,
-                callback: 'angular.callbacks._0',
+                callback: 'angular.callbacks._' + callbackCount,
                 jsonp: 'JSON_CALLBACK'
             });
-            // TODO: callback might need to be changed depending on when this was called.
+            callbackCount++;
 
             // Pay attention to this!
             if (/character/.test(path)) {
@@ -51,11 +56,11 @@
         function getClasses() {
             var classes = cache.load(classesKey);
             if (classes) {
-                logger.log(WowService, getClasses, 'Retrieving from cache.');
+                logger.debug(WowService, getClasses, 'Retrieving from cache.');
                 return promiseProvider.promiseFromObj(classes);
             }
 
-            logger.log(WowService, getClasses, 'Calling service.');
+            logger.debug(WowService, getClasses, 'Calling service.');
             return bnetRequest(api.route(api.wow.data.classes))
                 .then(function (response) {
                     cache.store(classesKey, response);
@@ -66,11 +71,11 @@
         function getRaces() {
             var races = cache.load(racesKey);
             if (races) {
-                logger.log(WowService, getRaces, 'Retrieving from cache.');
+                logger.debug(WowService, getRaces, 'Retrieving from cache.');
                 return promiseProvider.promiseFromObj(races);
             }
 
-            logger.log(WowService, getRaces, 'Calling service.');
+            logger.debug(WowService, getRaces, 'Calling service.');
             return bnetRequest(api.route(api.wow.data.races))
                 .then(function (response) {
                     cache.store(racesKey, response);
@@ -81,14 +86,13 @@
         function getTalents() {
             var talents = cache.load(talentsKey);
             if (talents) {
-                logger.log(WowService, getTalents, 'Retrieving from cache.');
+                logger.debug(WowService, getTalents, 'Retrieving from cache.');
                 return promiseProvider.promiseFromObj(talents);
             }
 
-            logger.log(WowService, getTalents, 'Calling service.');
+            logger.debug(WowService, getTalents, 'Calling service.');
             return bnetRequest(api.route(api.wow.data.talents))
                 .then(function (response) {
-                    debugger;
                     cache.store(talentsKey, response);
                     return response;
                 });

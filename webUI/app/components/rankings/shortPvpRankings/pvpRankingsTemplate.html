@@ -4,7 +4,11 @@
             {{vm.headerText}}
         </div>
 
-        <table class="table table-striped table-hover ">
+        <div class="progress progress-striped active" ng-show="vm.loadingCount > 0">
+            <div class="progress-bar progress-bar-warning" style="width: 100%"></div>
+        </div>
+
+        <table class="table table-striped table-hover" ng-show="vm.loadingCount <= 0">
             <thead>
             <tr>
                 <th>#</th>

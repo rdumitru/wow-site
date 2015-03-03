@@ -11,7 +11,7 @@
         init();
 
         function init() {
-            logger.log(SidebarController, init, 'Initializing...');
+            logger.debug(SidebarController, init, 'Initializing...');
         }
 
     }

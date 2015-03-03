@@ -11,7 +11,7 @@
         init();
 
         function init() {
-            logger.log(NavController, init, 'Initializing...');
+            logger.debug(NavController, init, 'Initializing...');
         }
 
     }

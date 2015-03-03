@@ -53,8 +53,13 @@ h1, h2, h3, h4, h5, h6 {
 //==============================================================================
 // TODO: put this nicely, add border to images.
 td {
+  max-width: 196px;
+  overflow: hidden;
+  text-overflow: ellipsis;
   vertical-align: baseline;
+  white-space: nowrap;
 }
+
 td img {
   vertical-align: text-bottom;
 }
@@ -100,4 +105,8 @@ th {
 //==============================================================================
 .pvp-rankings .pagination {
   margin: 0;
+}
+
+.pvp-rankings .progress {
+  margin: @navbar-margin-bottom;
 }

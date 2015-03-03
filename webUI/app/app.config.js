@@ -5,9 +5,11 @@
 
     app.config(Configuration);
 
-    Configuration.$inject = ['$stateProvider', '$urlRouterProvider'];
+    Configuration.$inject = ['$logProvider', '$stateProvider', '$urlRouterProvider'];
 
-    function Configuration($stateProvider, $urlRouterProvider) {
+    function Configuration($logProvider, $stateProvider, $urlRouterProvider) {
+        $logProvider.debugEnabled(true);
+
         $urlRouterProvider.otherwise('/home');
 
         $stateProvider

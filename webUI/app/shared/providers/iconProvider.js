@@ -104,6 +104,10 @@
                     });
 
                     var raceStr = raceObj.name.replace(/\s/g, '').toLowerCase();
+                    if (raceStr === 'undead') {
+                        raceStr = 'scourge';
+                    }
+
                     var queryStr = 'race_' + raceStr + '_' + genderStr;
                     var link = zamIconLink(queryStr, size);
 

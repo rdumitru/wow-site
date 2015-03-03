@@ -14,7 +14,8 @@
         init();
 
         function init() {
-            logger.log(PvpRankingsController, init, 'Initializing.');
+            logger.debug(PvpRankingsController, init, 'Initializing.');
+            vm.loadingCount = 0;
 
             // Set the panel title.
             vm.headerText = vm.bracket.displayLong + ' - ' + vm.region.displayLong;
@@ -27,10 +28,11 @@
             }
 
             // Get the leaderboard.
+            vm.loadingCount++;
             wowService.getPvpLeaderboard(vm.bracket, vm.region)
                 .then(function (response) {
-                    debugger;
                     vm.leaderboard = response.data.rows;
+                    vm.loadingCount--;
                     loadPage(1);
                 });
         }
@@ -57,19 +59,25 @@
                     rating: item.rating
                 };
 
+                vm.loadingCount++;
                 iconProvider.classIconPromise(item.classId, vm.iconSize)
                     .then(function (response) {
                         entry.classIconLink = response.link;
+                        vm.loadingCount--;
                     });
 
+                vm.loadingCount++;
                 iconProvider.raceIconPromise(item.raceId, item.genderId, vm.iconSize)
                     .then(function (response) {
                         entry.raceIconLink = response.link;
+                        vm.loadingCount--;
                     });
 
+                vm.loadingCount++;
                 iconProvider.specIconPromise(item.specId, vm.iconSize)
                     .then(function (response) {
                         entry.specIconLink = response.link;
+                        vm.loadingCount--;
                     });
 
                 vm.pageData.push(entry);
@@ -78,6 +86,8 @@
             // TODO: disable reponsiveness and add a min width.
             // TODO: write a pagination directive.
             // TODO: write a wow data service to retrieve
+            // TODO: figure out angular animations.
+            // TODO: ng-show with delay.
         }
 
     }

@@ -11,7 +11,7 @@
         init();
 
         function init() {
-            logger.log(FooterController, init, 'Initializing...');
+            logger.debug(FooterController, init, 'Initializing...');
         }
 
     }

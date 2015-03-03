@@ -1,4 +1,43 @@
 @import "darkly/bootstrap.css";
+.class-dk {
+  color: #c41f3b;
+}
+.class-druid {
+  color: #ff7d0a;
+}
+.class-hunter {
+  color: #abd473;
+}
+.class-mage {
+  color: #69ccf0;
+}
+.class-monk {
+  color: #00ff96;
+}
+.class-paladin {
+  color: #f58cba;
+}
+.class-priest {
+  color: #ffffff;
+}
+.class-rogue {
+  color: #fff569;
+}
+.class-shaman {
+  color: #0070de;
+}
+.class-warlock {
+  color: #9482c9;
+}
+.class-warrior {
+  color: #c79c6e;
+}
+.change-positive {
+  color: #2dd300;
+}
+.change-negative {
+  color: #db0000;
+}
 * {
   margin: 0;
   padding: 0;
@@ -29,7 +68,11 @@ h6 {
   color: #d66400;
 }
 td {
+  max-width: 196px;
+  overflow: hidden;
+  text-overflow: ellipsis;
   vertical-align: baseline;
+  white-space: nowrap;
 }
 td img {
   vertical-align: text-bottom;
@@ -59,4 +102,7 @@ th {
 }
 .pvp-rankings .pagination {
   margin: 0;
+}
+.pvp-rankings .progress {
+  margin: 21px;
 }

@@ -18,7 +18,7 @@
             obj.timestamp = moment().toISOString();
             localStorage.setItem(key, JSON.stringify(obj));
 
-            logger.log(Cache, store, 'Storing object with key: \"' + key + '\".');
+            logger.debug(Cache, store, 'Storing object with key: \"' + key + '\".');
         }
 
         function load(key) {
@@ -36,6 +36,7 @@
             var nowMoment = moment();
 
             if (nowMoment.diff(objMoment, 'minutes') >= globalConstants.CACHE_MINUTES) {
+                localStorage.removeItem(key);
                 return null;
             }
 

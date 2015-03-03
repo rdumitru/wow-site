@@ -22,7 +22,13 @@
         };
 
         function link(scope, element, attrs, ctrl) {
-            logger.log(PvpRankingsDirective, link, 'Configuring.');
+            logger.debug(PvpRankingsDirective, link, 'Configuring.');
+
+            _.delay(function() {
+                var tableHead = $(element.find('thead'));
+                // TODO: add a fixed height on the table.
+            }, 0);
+
         }
     }
 })();
