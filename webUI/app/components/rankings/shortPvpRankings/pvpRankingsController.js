@@ -88,6 +88,7 @@
             // TODO: write a wow data service to retrieve
             // TODO: figure out angular animations.
             // TODO: ng-show with delay.
+            // TODO: change content type in bnetRequest.
         }
 
     }
