@@ -23,12 +23,6 @@
 
         function link(scope, element, attrs, ctrl) {
             logger.debug(PvpRankingsDirective, link, 'Configuring.');
-
-            _.delay(function() {
-                var tableHead = $(element.find('thead'));
-                // TODO: add a fixed height on the table.
-            }, 0);
-
         }
     }
 })();

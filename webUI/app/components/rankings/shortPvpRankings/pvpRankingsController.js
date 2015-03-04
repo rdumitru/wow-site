@@ -3,9 +3,9 @@
 
     angular.module('app.rankings').controller('PvpRankingsController', PvpRankingsController);
 
-    PvpRankingsController.$inject = ['wowService', 'iconProvider', 'globalEnum', 'logger'];
+    PvpRankingsController.$inject = ['$scope', 'wowService', 'iconProvider', 'globalEnum', 'logger'];
 
-    function PvpRankingsController(wowService, iconProvider, globalEnum, logger) {
+    function PvpRankingsController($scope, wowService, iconProvider, globalEnum, logger) {
         var vm = this;
 
         // Constants.

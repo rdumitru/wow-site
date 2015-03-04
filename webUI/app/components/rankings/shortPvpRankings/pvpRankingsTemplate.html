@@ -1,52 +1,56 @@
-<article class="col-md-12 pvp-rankings">
+<article class="pvp-rankings col-md-12">
     <div class="panel panel-primary">
         <div class="panel-heading">
             {{vm.headerText}}
         </div>
 
-        <div class="progress progress-striped active" ng-show="vm.loadingCount > 0">
-            <div class="progress-bar progress-bar-warning" style="width: 100%"></div>
+        <div class="table-container">
+            <table class="table table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Class</th>
+                    <th>Spec</th>
+                    <th>Race</th>
+                    <th class="col-md-3">Player</th>
+                    <th class="col-md-2">Realm</th>
+                    <th>Faction</th>
+                    <th>Wins</th>
+                    <th>Losses</th>
+                    <th>Rating</th>
+                </tr>
+                </thead>
+
+                <tbody ng-show="vm.loadingCount <= 0" ng-cloak>
+                <tr ng-repeat="entry in vm.pageData">
+                    <td class="text-center">{{entry.ranking}}</td>
+                    <td class="text-center">
+                        <span class="icon"><img ng-src="{{entry.classIconLink}}"></span>
+                    </td>
+                    <td class="text-center">
+                        <span class="icon"><img ng-src="{{entry.specIconLink}}"></span>
+                    </td>
+                    <td class="text-center">
+                        <span class="icon"><img ng-src="{{entry.raceIconLink}}"></span>
+                    </td>
+                    <td>{{entry.name}}</td>
+                    <td>{{entry.realm}}</td>
+                    <td class="text-center">
+                        <span class="icon"><img ng-src="{{entry.factionIconLink}}"></span>
+                    </td>
+                    <td class="text-center change-positive">{{entry.wins}}</td>
+                    <td class="text-center change-negative">{{entry.losses}}</td>
+                    <td class="text-center">{{entry.rating}}</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
 
-        <table class="table table-striped table-hover" ng-show="vm.loadingCount <= 0">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>Class</th>
-                <th>Spec</th>
-                <th>Race</th>
-                <th class="col-md-3">Player</th>
-                <th class="col-md-2">Realm</th>
-                <th>Faction</th>
-                <th>Wins</th>
-                <th>Losses</th>
-                <th>Rating</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            <tr ng-repeat="entry in vm.pageData">
-                <td class="text-center">{{entry.ranking}}</td>
-                <td class="text-center">
-                    <span class="icon"><img ng-src="{{entry.classIconLink}}"></span>
-                </td>
-                <td class="text-center">
-                    <span class="icon"><img ng-src="{{entry.specIconLink}}"></span>
-                </td>
-                <td class="text-center">
-                    <span class="icon"><img ng-src="{{entry.raceIconLink}}"></span>
-                </td>
-                <td>{{entry.name}}</td>
-                <td>{{entry.realm}}</td>
-                <td class="text-center">
-                    <span class="icon"><img ng-src="{{entry.factionIconLink}}"></span>
-                </td>
-                <td class="text-center change-positive">{{entry.wins}}</td>
-                <td class="text-center change-negative">{{entry.losses}}</td>
-                <td class="text-center">{{entry.rating}}</td>
-            </tr>
-            </tbody>
-        </table>
+        <div class="panel-body" ng-show="vm.loadingCount > 0">
+            <div class="progress progress-striped active">
+                <div class="progress-bar progress-bar-warning" style="width: 100%"></div>
+            </div>
+        </div>
 
         <div class="panel-footer">
             <div class="row">

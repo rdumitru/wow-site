@@ -86,16 +86,44 @@ th {
 }
 
 //==============================================================================
+// Common classes.
+//==============================================================================
+.is-hidden {
+  visibility: hidden;
+  cursor: default;
+}
+
+//==============================================================================
 // Bootstrap overrides.
 //==============================================================================
+
+//-------------------------------------
+// Navbar.
+//-------------------------------------
 .navbar-default {
   background-color: @nav-color;
 }
 
+//-------------------------------------
+// Panel.
+//-------------------------------------
 .panel {
   background-color: @panel-color;
 }
 
+.panel table {
+  margin: 0;
+}
+
+.panel .table-container {
+  border-bottom: 1px solid @gray;
+  overflow: auto;
+  width: 100%;
+}
+
+//-------------------------------------
+// Jumbotron.
+//-------------------------------------
 .jumbotron {
   background-color: @jumbo-color;
 }
@@ -108,5 +136,44 @@ th {
 }
 
 .pvp-rankings .progress {
+  background-color: @gray-light;
   margin: @navbar-margin-bottom;
+}
+
+//==============================================================================
+// Scroll bars.
+//==============================================================================
+// TODO: finish scrollbar colors.
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: @gray-light;
+  border: 0px none #ffffff;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: @gray-darker;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #000000;
+}
+::-webkit-scrollbar-track {
+  background: #666666;
+  border: 0px none #ffffff;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #666666;
+}
+::-webkit-scrollbar-track:active {
+  background: #333333;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
