@@ -3,9 +3,9 @@
 
     angular.module('app.providers').factory('iconProvider', IconProvider);
 
-    IconProvider.$inject = ['$q', 'wowService', 'globalConstants', 'globalEnum', 'logger'];
+    IconProvider.$inject = ['$q', 'globalConstants', 'globalEnum', 'logger'];
 
-    function IconProvider($q, wowService, globalConstants, globalEnum, logger) {
+    function IconProvider($q, globalConstants, globalEnum, logger) {
         //=====================================================================
         // Constants.
         //=====================================================================
@@ -70,73 +70,6 @@
             return zamIconLink(queryStr, size);
         }
 
-        function classIconPromise(classBlizzId, size) {
-            var deferred = $q.defer();
-
-            wowService.getClasses()
-                .then(function (response) {
-                    var classObj = _.find(response.data.classes, function(aClass) {
-                        return classBlizzId === aClass.id;
-                    });
-
-                    var classStr = classObj.name.replace(/\s/g, '').toLowerCase();
-                    var queryStr = 'class_' + classStr;
-                    var link = zamIconLink(queryStr, size);
-
-                    return deferred.resolve({ link: link });
-                });
-
-            return deferred.promise;
-        }
-
-        function raceIconPromise(raceBlizzId, genderBlizzId, size) {
-            var deferred = $q.defer();
-
-            var genderStr = 'male';
-            if (genderBlizzId === 1) {
-                genderStr = 'female';
-            }
-
-            wowService.getRaces()
-                .then(function (response) {
-                    var raceObj = _.find(response.data.races, function(race) {
-                        return raceBlizzId === race.id;
-                    });
-
-                    var raceStr = raceObj.name.replace(/\s/g, '').toLowerCase();
-                    if (raceStr === 'undead') {
-                        raceStr = 'scourge';
-                    }
-
-                    var queryStr = 'race_' + raceStr + '_' + genderStr;
-                    var link = zamIconLink(queryStr, size);
-
-                    return deferred.resolve({ link: link });
-                });
-
-            return deferred.promise;
-        }
-
-        // TODO: put this in another service, and only call zamIconLink from now on.
-        function specIconPromise(specBlizzId, size) {
-            var deferred = $q.defer();
-
-            var classObj = _.find(globalEnum.class, function(aClass) {
-                return aClass.specs.indexOf(specBlizzId) >= 0;
-            });
-            var specIndex = classObj.specs.indexOf(specBlizzId);
-
-            wowService.getTalents()
-                .then(function (response) {
-                    var specObj = response.data[classObj.blizzId].specs[specIndex];
-                    var link = zamIconLink(specObj.icon, size);
-
-                    return deferred.resolve({ link: link });
-                });
-
-            return deferred.promise;
-        }
-
         //=====================================================================
         // Expose functions.
         //=====================================================================
@@ -145,10 +78,7 @@
             zamIconLink: zamIconLink,
             factionIconLink: factionIconLink,
             classIconLink: classIconLink,
-            raceIconLink: raceIconLink,
-            classIconPromise: classIconPromise,
-            raceIconPromise: raceIconPromise,
-            specIconPromise: specIconPromise
+            raceIconLink: raceIconLink
         };
     }
 

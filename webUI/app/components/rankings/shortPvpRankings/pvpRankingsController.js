@@ -60,32 +60,32 @@
                 };
 
                 vm.loadingCount++;
-                iconProvider.classIconPromise(item.classId, vm.iconSize)
+                wowService.getClass(item.classId)
                     .then(function (response) {
-                        entry.classIconLink = response.link;
+                        entry.classIconLink = response.data.class.iconLink(vm.iconSize);
+                        entry.cssClass = response.data.class.cssClass;
                         vm.loadingCount--;
                     });
 
                 vm.loadingCount++;
-                iconProvider.raceIconPromise(item.raceId, item.genderId, vm.iconSize)
+                wowService.getRace(item.raceId, item.genderId)
                     .then(function (response) {
-                        entry.raceIconLink = response.link;
+                        entry.raceIconLink = response.data.race.iconLink(vm.iconSize);
                         vm.loadingCount--;
                     });
 
                 vm.loadingCount++;
-                iconProvider.specIconPromise(item.specId, vm.iconSize)
+                wowService.getSpec(item.specId)
                     .then(function (response) {
-                        entry.specIconLink = response.link;
+                        entry.specIconLink = response.data.spec.iconLink(vm.iconSize);
                         vm.loadingCount--;
                     });
 
                 vm.pageData.push(entry);
             });
 
-            // TODO: disable reponsiveness and add a min width.
+            // TODO: add shadoes to all panels to make contents seem in a well.
             // TODO: write a pagination directive.
-            // TODO: write a wow data service to retrieve
             // TODO: figure out angular animations.
             // TODO: ng-show with delay.
             // TODO: change content type in bnetRequest.

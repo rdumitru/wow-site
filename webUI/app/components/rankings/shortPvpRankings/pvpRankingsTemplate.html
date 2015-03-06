@@ -33,7 +33,7 @@
                     <td class="text-center">
                         <span class="icon"><img ng-src="{{entry.raceIconLink}}"></span>
                     </td>
-                    <td>{{entry.name}}</td>
+                    <td ng-class="entry.cssClass">{{entry.name}}</td>
                     <td>{{entry.realm}}</td>
                     <td class="text-center">
                         <span class="icon"><img ng-src="{{entry.factionIconLink}}"></span>

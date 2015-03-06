@@ -3,9 +3,9 @@
 
     angular.module('app.services').factory('wowService', WowService);
 
-    WowService.$inject = ['$http', 'cache', 'promiseProvider', 'globalConstants', 'globalEnum', 'api', 'logger'];
+    WowService.$inject = ['$http', '$q', 'cache', 'promiseProvider', 'iconProvider', 'globalConstants', 'globalEnum', 'api', 'logger'];
 
-    function WowService($http, cache, promiseProvider, globalConstants, globalEnum, api, logger) {
+    function WowService($http, $q, cache, promiseProvider, iconProvider, globalConstants, globalEnum, api, logger) {
         //=====================================================================
         // Local variables.
         //=====================================================================
@@ -55,6 +55,7 @@
         //=====================================================================
         function getClasses() {
             var classes = cache.load(classesKey);
+
             if (classes) {
                 logger.debug(WowService, getClasses, 'Retrieving from cache.');
                 return promiseProvider.promiseFromObj(classes);
@@ -98,6 +99,85 @@
                 });
         }
 
+        function getClass(classBlizzId) {
+            var deferred = $q.defer();
+
+            getClasses()
+                .then(function (response) {
+                    var classObj = _.find(response.data.classes, function(aClass) {
+                        return classBlizzId === aClass.id;
+                    });
+
+                    var classStr = classObj.name.replace(/\s/g, '').toLowerCase();
+                    var queryStr = 'class_' + classStr;
+                    classObj.iconLink = function (size) {
+                        return iconProvider.zamIconLink(queryStr, size);
+                    };
+                    classObj.cssClass = 'class-' + classStr;
+
+                    return deferred.resolve({
+                        data: { class: classObj }
+                    });
+                });
+
+            return deferred.promise;
+        }
+
+        function getRace(raceBlizzId, genderBlizzId) {
+            var deferred = $q.defer();
+
+            var genderStr = 'male';
+            if (genderBlizzId === 1) {
+                genderStr = 'female';
+            }
+
+            getRaces()
+                .then(function (response) {
+                    var raceObj = _.find(response.data.races, function(race) {
+                        return raceBlizzId === race.id;
+                    });
+
+                    var raceStr = raceObj.name.replace(/\s/g, '').toLowerCase();
+                    if (raceStr === 'undead') {
+                        raceStr = 'scourge';
+                    }
+
+                    var queryStr = 'race_' + raceStr + '_' + genderStr;
+                    raceObj.iconLink = function (size) {
+                        return iconProvider.zamIconLink(queryStr, size);
+                    };
+
+                    return deferred.resolve({
+                        data: { race: raceObj }
+                    });
+                });
+
+            return deferred.promise;
+        }
+
+        function getSpec(specBlizzId) {
+            var deferred = $q.defer();
+
+            var classObj = _.find(globalEnum.class, function(aClass) {
+                return aClass.specs.indexOf(specBlizzId) >= 0;
+            });
+            var specIndex = classObj.specs.indexOf(specBlizzId);
+
+            getTalents()
+                .then(function (response) {
+                    var specObj = response.data[classObj.blizzId].specs[specIndex];
+                    specObj.iconLink = function (size) {
+                        return iconProvider.zamIconLink(specObj.icon, size);
+                    };
+
+                    return deferred.resolve({
+                        data: { spec: specObj }
+                    });
+                });
+
+            return deferred.promise;
+        }
+
         function getPvpLeaderboard(bracket, region) {
             return bnetRequest(api.route(api.wow.pvp.leaderboard, { bracket: bracket.enumVal }), region);
         }
@@ -109,6 +189,9 @@
             getClasses: getClasses,
             getRaces: getRaces,
             getTalents: getTalents,
+            getClass: getClass,
+            getRace: getRace,
+            getSpec: getSpec,
             getPvpLeaderboard: getPvpLeaderboard
         };
     }

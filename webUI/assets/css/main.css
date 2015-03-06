@@ -1,5 +1,5 @@
 @import "darkly/bootstrap.css";
-.class-dk {
+.class-deathknight {
   color: #c41f3b;
 }
 .class-druid {
@@ -37,6 +37,67 @@
 }
 .change-negative {
   color: #db0000;
+}
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #2f2f2f;
+  border: 0px none #2f2f2f;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #484848;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #4e4e4e;
+}
+::-webkit-scrollbar-track {
+  background: #1b1b1b;
+  border: 0px none #1b1b1b;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #1b1b1b;
+}
+::-webkit-scrollbar-track:active {
+  background: #1b1b1b;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+.pvp-rankings .panel {
+  box-shadow: 0 3px 10px #181818;
+}
+.pvp-rankings .pagination {
+  margin: 0;
+}
+.pvp-rankings .progress {
+  background-color: #808080;
+  margin: 21px;
+}
+.pvp-rankings table {
+  margin: 0;
+}
+.pvp-rankings .panel-heading {
+  box-shadow: 0 3px 10px #181818;
+}
+.pvp-rankings .panel-body {
+  background-color: #282828;
+}
+.pvp-rankings .panel-footer {
+  background-color: #404040;
+  border: none;
+  box-shadow: 0 -3px 10px #181818;
+}
+.pvp-rankings .table-container {
+  overflow: auto;
+  width: 100%;
 }
 * {
   margin: 0;
@@ -80,6 +141,10 @@ td img {
 th {
   color: #d66400;
 }
+.icon img {
+  border: solid 1px #3a302e;
+  box-shadow: 0 0 10px black;
+}
 .padding-all {
   padding: 16px;
 }
@@ -101,54 +166,6 @@ th {
 .panel {
   background-color: #222222;
 }
-.panel table {
-  margin: 0;
-}
-.panel .table-container {
-  border-bottom: 1px solid #484848;
-  overflow: auto;
-  width: 100%;
-}
 .jumbotron {
   background-color: #222222;
-}
-.pvp-rankings .pagination {
-  margin: 0;
-}
-.pvp-rankings .progress {
-  background-color: #808080;
-  margin: 21px;
-}
-::-webkit-scrollbar {
-  width: 12px;
-  height: 12px;
-}
-::-webkit-scrollbar-button {
-  width: 0px;
-  height: 0px;
-}
-::-webkit-scrollbar-thumb {
-  background: #808080;
-  border: 0px none #ffffff;
-  border-radius: 0px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #222222;
-}
-::-webkit-scrollbar-thumb:active {
-  background: #000000;
-}
-::-webkit-scrollbar-track {
-  background: #666666;
-  border: 0px none #ffffff;
-  border-radius: 0px;
-}
-::-webkit-scrollbar-track:hover {
-  background: #666666;
-}
-::-webkit-scrollbar-track:active {
-  background: #333333;
-}
-::-webkit-scrollbar-corner {
-  background: transparent;
 }
