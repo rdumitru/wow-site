@@ -8,6 +8,9 @@
     function PvpRankingsController($scope, wowService, iconProvider, globalEnum, logger) {
         var vm = this;
 
+        // Exposed functions.
+        vm.loadPage = loadPage;
+
         // Constants.
         vm.iconSize = globalEnum.iconSize.Small;
 
@@ -21,7 +24,7 @@
             vm.headerText = vm.bracket.displayLong + ' - ' + vm.region.displayLong;
 
             // Set the page details.
-            vm.pageNo = 1;
+            vm.pageNumber = 1;
             vm.pageSize = vm.optionalPageSize;
             if (!vm.pageSize) {
                 vm.pageSize = 5;
@@ -32,20 +35,32 @@
             wowService.getPvpLeaderboard(vm.bracket, vm.region)
                 .then(function (response) {
                     vm.leaderboard = response.data.rows;
+                    vm.loadPage();
                     vm.loadingCount--;
-                    loadPage(1);
                 });
+
+            // Delay the table display, wait for all images to load.
+            vm.loadingCount++;
+            _.delay(function() {
+                $scope.$apply(function () {
+                    vm.loadingCount--;
+                });
+            }, 2000);
         }
 
         //=====================================================================
         // Helper functions.
         //=====================================================================
-        function loadPage(pageNo) {
-            if (pageNo < 1 || pageNo > (vm.leaderboard.length / vm.pageSize)) {
-                logger.warn(PvpRankingsController, loadPage, 'Invalid page number: ' + pageNo + '. Clamping to array edge.');
+        function loadPage() {
+            var minPageNumber = 1;
+            var maxPageNumber = Math.ceil(vm.leaderboard.length / vm.pageSize);
+
+            if (vm.pageNumber < minPageNumber || vm.pageNumber > maxPageNumber) {
+                logger.warn(PvpRankingsController, loadPage, 'Invalid page number: ' + vm.pageNumber + '. Clamping to array edge.');
+                vm.pageNumber = Math.min(Math.max(vm.pageNumber, minPageNumber), maxPageNumber);
             }
 
-            var leaderboardSlice = vm.leaderboard.slice((pageNo - 1) * vm.pageSize, pageNo * vm.pageSize);
+            var leaderboardSlice = vm.leaderboard.slice((vm.pageNumber - 1) * vm.pageSize, vm.pageNumber * vm.pageSize);
             vm.pageData = [];
 
             _.forEach(leaderboardSlice, function (item) {
@@ -54,6 +69,7 @@
                     name: item.name,
                     realm: item.realmName,
                     factionIconLink: iconProvider.factionIconLink(item.factionId, vm.iconSize),
+                    factionDisplay: item.factionId === 0 ? 'Alliance' : 'Horde',
                     wins: item.seasonWins,
                     losses: item.seasonLosses,
                     rating: item.rating
@@ -63,7 +79,8 @@
                 wowService.getClass(item.classId)
                     .then(function (response) {
                         entry.classIconLink = response.data.class.iconLink(vm.iconSize);
-                        entry.cssClass = response.data.class.cssClass;
+                        entry.classDisplay = response.data.class.name;
+                        entry.classCssClass = response.data.class.cssClass;
                         vm.loadingCount--;
                     });
 
@@ -71,6 +88,7 @@
                 wowService.getRace(item.raceId, item.genderId)
                     .then(function (response) {
                         entry.raceIconLink = response.data.race.iconLink(vm.iconSize);
+                        entry.raceDisplay = response.data.race.name;
                         vm.loadingCount--;
                     });
 
@@ -78,18 +96,12 @@
                 wowService.getSpec(item.specId)
                     .then(function (response) {
                         entry.specIconLink = response.data.spec.iconLink(vm.iconSize);
+                        entry.specDisplay = response.data.spec.name;
                         vm.loadingCount--;
                     });
 
-                vm.pageData.push(entry);
+                vm.pageData.push(entry);;
             });
-
-            // TODO: add shadoes to all panels to make contents seem in a well.
-            // TODO: write a pagination directive.
-            // TODO: figure out angular animations.
-            // TODO: ng-show with delay.
-            // TODO: change content type in bnetRequest.
         }
-
     }
 })();

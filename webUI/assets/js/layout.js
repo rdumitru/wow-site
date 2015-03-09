@@ -1,15 +1,5 @@
 (function ($, window, document) {
 
-    $(document).ready (function () {
-        // Add handle to adjust footer on resize.
-        handleFooterResize();
-    });
-
-    $(window).load(function () {
-        // Adjust footer on load.
-        adjustBodyPadding();
-    });
-
     //==========================================================================
     // Global variables.
     //==========================================================================
@@ -21,7 +11,20 @@
     var navbarClass = '.navbar';
 
     //==========================================================================
-    // Footer resize.
+    // Events.
+    //==========================================================================
+    $(document).ready (function () {
+        // Add handle to adjust footer on resize.
+        handleFooterResize();
+    });
+
+    $(window).load(function () {
+        // Adjust footer on load.
+        $(window).trigger('resize');
+    });
+
+    //==========================================================================
+    // Footer resize handlers.
     //==========================================================================
     function handleFooterResize() {
         var windowHandle = $(window);
@@ -29,11 +32,13 @@
     }
 
     function adjustBodyPadding() {
-        var footerHeight = $(footerId).height();
+        _.delay(function () {
+            var footerHeight = $(footerId).outerHeight();
 
-        $('body').css({
-            'padding-bottom': footerHeight
-        });
+            $('body').css({
+                'padding-bottom': footerHeight
+            });
+        }, 0);
     }
 
 })(window.jQuery, window, document);

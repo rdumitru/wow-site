@@ -38,6 +38,62 @@
 .change-negative {
   color: #db0000;
 }
+.padding-all {
+  padding: 16px;
+}
+.padding-y {
+  padding-bottom: 16px;
+  padding-top: 16px;
+}
+.padding-x {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.is-invisible {
+  visibility: hidden;
+  cursor: default;
+}
+[ng\:cloak],
+[ng-cloak],
+.ng-cloak {
+  display: none !important;
+}
+.navbar-default {
+  background-color: rgba(24, 24, 24, 0.9);
+}
+.panel {
+  background-color: #222222;
+  box-shadow: 0 3px 6px #181818;
+}
+.panel-heading {
+  box-shadow: 0 3px 6px #181818;
+}
+.panel-footer {
+  border: none;
+  box-shadow: 0 -3px 6px #181818;
+}
+.jumbotron {
+  background-color: #222222;
+  box-shadow: 0 3px 6px #181818;
+}
+.well {
+  box-shadow: 0 3px 6px #181818;
+}
+.alert {
+  box-shadow: 0 3px 6px #181818;
+}
+.list-group {
+  box-shadow: 0 3px 6px #181818;
+}
+.progress {
+  height: 16px;
+}
+th:hover {
+  color: red;
+}
+th:hover::after {
+  content: '&#9650';
+}
 ::-webkit-scrollbar {
   width: 12px;
   height: 12px;
@@ -71,9 +127,6 @@
 ::-webkit-scrollbar-corner {
   background: transparent;
 }
-.pvp-rankings .panel {
-  box-shadow: 0 3px 10px #181818;
-}
 .pvp-rankings .pagination {
   margin: 0;
 }
@@ -84,16 +137,11 @@
 .pvp-rankings table {
   margin: 0;
 }
-.pvp-rankings .panel-heading {
-  box-shadow: 0 3px 10px #181818;
-}
 .pvp-rankings .panel-body {
   background-color: #282828;
 }
 .pvp-rankings .panel-footer {
   background-color: #404040;
-  border: none;
-  box-shadow: 0 -3px 10px #181818;
 }
 .pvp-rankings .table-container {
   overflow: auto;
@@ -113,8 +161,8 @@ body {
   padding-top: 81px;
 }
 #footer {
-  bottom: 0;
   background-color: rgba(24, 24, 24, 0.9);
+  bottom: 0;
   margin-bottom: 0;
   clear: both;
   position: absolute;
@@ -143,29 +191,5 @@ th {
 }
 .icon img {
   border: solid 1px #3a302e;
-  box-shadow: 0 0 10px black;
-}
-.padding-all {
-  padding: 16px;
-}
-.padding-y {
-  padding-bottom: 16px;
-  padding-top: 16px;
-}
-.padding-x {
-  padding-left: 16px;
-  padding-right: 16px;
-}
-.is-hidden {
-  visibility: hidden;
-  cursor: default;
-}
-.navbar-default {
-  background-color: rgba(24, 24, 24, 0.9);
-}
-.panel {
-  background-color: #222222;
-}
-.jumbotron {
-  background-color: #222222;
+  box-shadow: 0 0 6px #181818;
 }

@@ -25,18 +25,26 @@
                 <tr ng-repeat="entry in vm.pageData">
                     <td class="text-center">{{entry.ranking}}</td>
                     <td class="text-center">
-                        <span class="icon"><img ng-src="{{entry.classIconLink}}"></span>
+                        <span class="icon">
+                            <img ng-src="{{entry.classIconLink}}" tooltip="{{entry.classDisplay}}">
+                        </span>
                     </td>
                     <td class="text-center">
-                        <span class="icon"><img ng-src="{{entry.specIconLink}}"></span>
+                        <span class="icon">
+                            <img ng-src="{{entry.specIconLink}}" tooltip="{{entry.specDisplay}}">
+                        </span>
                     </td>
                     <td class="text-center">
-                        <span class="icon"><img ng-src="{{entry.raceIconLink}}"></span>
+                        <span class="icon">
+                            <img ng-src="{{entry.raceIconLink}}" tooltip="{{entry.raceDisplay}}">
+                        </span>
                     </td>
-                    <td ng-class="entry.cssClass">{{entry.name}}</td>
+                    <td ng-class="entry.classCssClass">{{entry.name}}</td>
                     <td>{{entry.realm}}</td>
                     <td class="text-center">
-                        <span class="icon"><img ng-src="{{entry.factionIconLink}}"></span>
+                        <span class="icon">
+                            <img ng-src="{{entry.factionIconLink}}" tooltip="{{entry.factionDisplay}}">
+                        </span>
                     </td>
                     <td class="text-center change-positive">{{entry.wins}}</td>
                     <td class="text-center change-negative">{{entry.losses}}</td>
@@ -47,29 +55,24 @@
         </div>
 
         <div class="panel-body" ng-show="vm.loadingCount > 0">
-            <div class="progress progress-striped active">
-                <div class="progress-bar progress-bar-warning" style="width: 100%"></div>
-            </div>
+            <progressbar class="progress-striped active" value="100" type="warning">
         </div>
 
         <div class="panel-footer">
-            <div class="row">
-                <div class="col-md-6">
+            <div class="row" ng-class="{'is-invisible': vm.loadingCount > 0}">
+                <div class="col-md-5">
                     <p>
-                        Showing 1-5 of {{vm.leaderboard.length}} results.
+                        Showing {{vm.pageData[0].ranking + ' - ' + vm.pageData[vm.pageData.length - 1].ranking}} of {{vm.leaderboard[vm.leaderboard.length - 1].ranking}} rankings.
                     </p>
                 </div>
 
-                <div class="col-md-6">
-                    <ul class="pagination pull-right">
-                        <li class="disabled"><a href="#">«</a></li>
-                        <li class="active"><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">»</a></li>
-                    </ul>
+                <div class="col-md-7">
+                    <pagination class="pagination-sm pull-right"
+                                ng-model="vm.pageNumber" ng-change="vm.loadPage()"
+                                total-items="vm.leaderboard.length" items-per-page="vm.pageSize"
+                                direction-links="true" boundary-links="true" max-size="5"
+                                previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;">
+                    </pagination>
                 </div>
             </div>
         </div>

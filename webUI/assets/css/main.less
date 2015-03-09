@@ -5,6 +5,9 @@
 
 // Partials.
 @import "partials/variables";
+@import "partials/common";
+@import "partials/angular";
+@import "partials/bootstrapOverride";
 @import "partials/scrollBar";
 
 // Components.
@@ -39,8 +42,8 @@ body {
 }
 
 #footer {
-  bottom: 0;
   background-color: @nav-color;
+  bottom: 0;
   margin-bottom: 0;
   clear: both;
   position: absolute;
@@ -73,57 +76,10 @@ th {
   color: @header-color;
 }
 
+//==============================================================================
+// General style.
+//==============================================================================
 .icon img {
   border: solid 1px @horde-brown-dark;
-  box-shadow: 0 0 10px black;
-}
-
-//==============================================================================
-// General layout.
-//==============================================================================
-.padding-all {
-  padding: @padding-default;
-}
-
-.padding-y {
-  padding-bottom: @padding-y;
-  padding-top: @padding-y;
-}
-
-.padding-x {
-  padding-left: @padding-x;
-  padding-right: @padding-x;
-}
-
-//==============================================================================
-// Common classes.
-//==============================================================================
-.is-hidden {
-  visibility: hidden;
-  cursor: default;
-}
-
-//==============================================================================
-// Bootstrap overrides.
-//==============================================================================
-
-//-------------------------------------
-// Navbar.
-//-------------------------------------
-.navbar-default {
-  background-color: @nav-color;
-}
-
-//-------------------------------------
-// Panel.
-//-------------------------------------
-.panel {
-  background-color: @panel-color;
-}
-
-//-------------------------------------
-// Jumbotron.
-//-------------------------------------
-.jumbotron {
-  background-color: @jumbo-color;
+  box-shadow: @shadow-icon;
 }
