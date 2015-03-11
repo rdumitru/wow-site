@@ -88,12 +88,6 @@
 .progress {
   height: 16px;
 }
-th:hover {
-  color: red;
-}
-th:hover::after {
-  content: '&#9650';
-}
 ::-webkit-scrollbar {
   width: 12px;
   height: 12px;
@@ -188,6 +182,25 @@ td img {
 }
 th {
   color: #d66400;
+}
+.sort-asc::after {
+  content: "\20\25b4";
+}
+.sort-desc::after {
+  content: "\20\25be";
+}
+.sort {
+  cursor: pointer;
+}
+.sort:not(.sort-asc):not(.sort-desc)::after {
+  content: "\20\25b4";
+  color: transparent;
+  display: inline-block;
+  white-space: nowrap;
+}
+.sort:not(.sort-asc):not(.sort-desc):hover::after {
+  color: #d66400;
+  content: "\20\25b4";
 }
 .icon img {
   border: solid 1px #3a302e;

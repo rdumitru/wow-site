@@ -76,6 +76,33 @@ th {
   color: @header-color;
 }
 
+@caret-up: "\20\25b4";
+@caret-down: "\20\25be";
+
+.sort-asc::after {
+  content: @caret-up;
+}
+
+.sort-desc::after {
+  content: @caret-down;
+}
+
+.sort {
+  cursor: pointer;
+}
+
+.sort:not(.sort-asc):not(.sort-desc)::after {
+  content: @caret-up;
+  color: transparent;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.sort:not(.sort-asc):not(.sort-desc):hover::after {
+  color: @header-color;
+  content: @caret-up;
+}
+
 //==============================================================================
 // General style.
 //==============================================================================

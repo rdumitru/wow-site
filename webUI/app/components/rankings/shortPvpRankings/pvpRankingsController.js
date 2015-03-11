@@ -10,10 +10,54 @@
 
         // Exposed functions.
         vm.loadPage = loadPage;
+        vm.sortBy = sortBy;
+
+        // Exposed variables.
+        vm.headers = [{
+            display: '#',
+            key: 'ranking'
+        }, {
+            display: 'Class',
+            key: 'classId'
+        }, {
+            display: 'Spec',
+            key: 'specId'
+        }, {
+            display: 'Race',
+            key: 'raceId'
+        }, {
+            display: 'Player',
+            key: 'name',
+            cssClass: 'col-md-2'
+        }, {
+            display: 'Realm',
+            key: 'realmName',
+            cssClass: 'col-md-2'
+        }, {
+            display: 'Faction',
+            key: 'factionId'
+        }, {
+            display: 'Wins',
+            key: 'seasonWins'
+        }, {
+            display: 'Losses',
+            key: 'seasonLosses'
+        }, {
+            display: 'Rating',
+            key: 'classId'
+        }];
+
+        vm.sortByOpt = {
+            key: null,
+            isAscending: true
+        };
 
         // Constants.
-        vm.iconSize = globalEnum.iconSize.Small;
+        var ICON_SIZE = globalEnum.iconSize.Small;
 
+        //=====================================================================
+        // Initialization.
+        //=====================================================================
         init();
 
         function init() {
@@ -35,7 +79,7 @@
             wowService.getPvpLeaderboard(vm.bracket, vm.region)
                 .then(function (response) {
                     vm.leaderboard = response.data.rows;
-                    vm.loadPage();
+                    vm.sortBy(vm.headers[0].key);
                     vm.loadingCount--;
                 });
 
@@ -49,7 +93,7 @@
         }
 
         //=====================================================================
-        // Helper functions.
+        // Functions implementation.
         //=====================================================================
         function loadPage() {
             var minPageNumber = 1;
@@ -68,7 +112,7 @@
                     ranking: item.ranking,
                     name: item.name,
                     realm: item.realmName,
-                    factionIconLink: iconProvider.factionIconLink(item.factionId, vm.iconSize),
+                    factionIconLink: iconProvider.factionIconLink(item.factionId, ICON_SIZE),
                     factionDisplay: item.factionId === 0 ? 'Alliance' : 'Horde',
                     wins: item.seasonWins,
                     losses: item.seasonLosses,
@@ -78,7 +122,7 @@
                 vm.loadingCount++;
                 wowService.getClass(item.classId)
                     .then(function (response) {
-                        entry.classIconLink = response.data.class.iconLink(vm.iconSize);
+                        entry.classIconLink = response.data.class.iconLink(ICON_SIZE);
                         entry.classDisplay = response.data.class.name;
                         entry.classCssClass = response.data.class.cssClass;
                         vm.loadingCount--;
@@ -87,7 +131,7 @@
                 vm.loadingCount++;
                 wowService.getRace(item.raceId, item.genderId)
                     .then(function (response) {
-                        entry.raceIconLink = response.data.race.iconLink(vm.iconSize);
+                        entry.raceIconLink = response.data.race.iconLink(ICON_SIZE);
                         entry.raceDisplay = response.data.race.name;
                         vm.loadingCount--;
                     });
@@ -95,13 +139,32 @@
                 vm.loadingCount++;
                 wowService.getSpec(item.specId)
                     .then(function (response) {
-                        entry.specIconLink = response.data.spec.iconLink(vm.iconSize);
+                        entry.specIconLink = response.data.spec.iconLink(ICON_SIZE);
                         entry.specDisplay = response.data.spec.name;
                         vm.loadingCount--;
                     });
 
-                vm.pageData.push(entry);;
+                vm.pageData.push(entry);
             });
         }
+
+        function sortBy(key) {
+            if (key === vm.sortByOpt.key) {
+                vm.sortByOpt.isAscending = !vm.sortByOpt.isAscending;
+            } else {
+                vm.sortByOpt.isAscending = true;
+            }
+
+            vm.sortByOpt.key = key;
+
+            vm.leaderboard = _.sortBy(vm.leaderboard, 'name');
+            vm.leaderboard = _.sortBy(vm.leaderboard, vm.sortByOpt.key);
+            if (!vm.sortByOpt.isAscending) vm.leaderboard.reverse();
+
+            vm.loadPage();
+        }
+
+        // TODO: add logging.
+        // TODO: fix table headers carets.
     }
 })();
