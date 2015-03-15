@@ -191,12 +191,11 @@ th {
 }
 .sort {
   cursor: pointer;
+  white-space: nowrap;
 }
 .sort:not(.sort-asc):not(.sort-desc)::after {
   content: "\20\25b4";
   color: transparent;
-  display: inline-block;
-  white-space: nowrap;
 }
 .sort:not(.sort-asc):not(.sort-desc):hover::after {
   color: #d66400;

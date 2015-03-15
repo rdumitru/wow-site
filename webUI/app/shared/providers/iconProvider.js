@@ -3,9 +3,9 @@
 
     angular.module('app.providers').factory('iconProvider', IconProvider);
 
-    IconProvider.$inject = ['$q', 'globalConstants', 'globalEnum', 'logger'];
+    IconProvider.$inject = ['globalConstants', 'globalEnum', 'logger'];
 
-    function IconProvider($q, globalConstants, globalEnum, logger) {
+    function IconProvider(globalConstants, globalEnum, logger) {
         //=====================================================================
         // Constants.
         //=====================================================================

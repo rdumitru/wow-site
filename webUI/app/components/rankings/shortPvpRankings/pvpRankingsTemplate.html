@@ -72,7 +72,7 @@
             <div class="row" ng-class="{'is-invisible': vm.loadingCount > 0}">
                 <div class="col-md-5">
                     <p>
-                        Showing {{vm.pageData[0].ranking + ' - ' + vm.pageData[vm.pageData.length - 1].ranking}} of {{vm.leaderboard[vm.leaderboard.length - 1].ranking}} rankings.
+                        Showing {{(vm.startIndex + 1) + '-' + vm.endIndex}} of {{vm.leaderboard.length}} rankings.
                     </p>
                 </div>
 

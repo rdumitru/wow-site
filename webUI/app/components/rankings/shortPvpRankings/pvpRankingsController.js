@@ -96,16 +96,18 @@
         // Functions implementation.
         //=====================================================================
         function loadPage() {
+            vm.pageData = [];
+
             var minPageNumber = 1;
             var maxPageNumber = Math.ceil(vm.leaderboard.length / vm.pageSize);
-
             if (vm.pageNumber < minPageNumber || vm.pageNumber > maxPageNumber) {
                 logger.warn(PvpRankingsController, loadPage, 'Invalid page number: ' + vm.pageNumber + '. Clamping to array edge.');
                 vm.pageNumber = Math.min(Math.max(vm.pageNumber, minPageNumber), maxPageNumber);
             }
 
-            var leaderboardSlice = vm.leaderboard.slice((vm.pageNumber - 1) * vm.pageSize, vm.pageNumber * vm.pageSize);
-            vm.pageData = [];
+            vm.startIndex = Math.max((vm.pageNumber - 1) * vm.pageSize, 0);
+            vm.endIndex = Math.min(vm.pageNumber * vm.pageSize, vm.leaderboard.length);
+            var leaderboardSlice = vm.leaderboard.slice(vm.startIndex, vm.endIndex);
 
             _.forEach(leaderboardSlice, function (item) {
                 var entry = {
@@ -161,10 +163,12 @@
             vm.leaderboard = _.sortBy(vm.leaderboard, vm.sortByOpt.key);
             if (!vm.sortByOpt.isAscending) vm.leaderboard.reverse();
 
+            logger.debug(PvpRankingsController, sortBy, 'Sorting by \"' + key + '\" (' + vm.sortByOpt.isAscending + ').');
             vm.loadPage();
         }
 
         // TODO: add logging.
         // TODO: fix table headers carets.
+        // TODO: fix range display in footer.
     }
 })();
