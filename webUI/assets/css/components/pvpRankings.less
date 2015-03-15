@@ -1,28 +1,40 @@
 //==============================================================================
 // PvP rankings component.
 //==============================================================================
-.pvp-rankings .pagination {
-  margin: 0;
+.pvp-rankings {
+  table {
+    margin: 0;
+  }
+
+  .panel-body {
+    background-color: @gray-dark;
+  }
+
+  .panel-footer {
+    background-color: @gray-darkly;
+  }
+
+  .table-container {
+    overflow: auto;
+    width: 100%;
+  }
+
+  .pagination{
+    margin: 0;
+  }
+
+  .progress {
+    background-color: @gray-light;
+    margin: @navbar-margin-bottom;
+  }
 }
 
-.pvp-rankings .progress {
-  background-color: @gray-light;
-  margin: @navbar-margin-bottom;
-}
 
-.pvp-rankings table {
-  margin: 0;
-}
 
-.pvp-rankings .panel-body {
-  background-color: @gray-dark;
-}
 
-.pvp-rankings .panel-footer {
-  background-color: @gray-darkly;
-}
 
-.pvp-rankings .table-container {
-  overflow: auto;
-  width: 100%;
-}
+
+
+
+
+

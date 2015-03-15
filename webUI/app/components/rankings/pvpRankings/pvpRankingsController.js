@@ -44,13 +44,8 @@
             key: 'seasonLosses'
         }, {
             display: 'Rating',
-            key: 'classId'
+            key: 'rating'
         }];
-
-        vm.sortByOpt = {
-            key: null,
-            isAscending: true
-        };
 
         // Constants.
         var ICON_SIZE = globalEnum.iconSize.Small;
@@ -66,6 +61,12 @@
 
             // Set the panel title.
             vm.headerText = vm.bracket.displayLong + ' - ' + vm.region.displayLong;
+
+            // Initialize the sorting options.
+            vm.sortByOpt = {
+                key: null,
+                isAscending: true
+            };
 
             // Set the page details.
             vm.pageNumber = 1;
@@ -166,9 +167,6 @@
             logger.debug(PvpRankingsController, sortBy, 'Sorting by \"' + key + '\" (' + vm.sortByOpt.isAscending + ').');
             vm.loadPage();
         }
-
-        // TODO: add logging.
-        // TODO: fix table headers carets.
-        // TODO: fix range display in footer.
     }
+
 })();

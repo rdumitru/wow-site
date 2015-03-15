@@ -8,7 +8,7 @@
     function PvpRankingsDirective(logger) {
         return {
             restrict: 'E',
-            templateUrl: '/app/components/rankings/shortPvpRankings/pvpRankingsTemplate.html',
+            templateUrl: '/app/components/rankings/pvpRankings/pvpRankingsTemplate.html',
             replace: true,
             controller: 'PvpRankingsController',
             controllerAs: 'vm',
