@@ -14,7 +14,9 @@
             controllerAs: 'vm',
             bindToController: true,
             scope: {
-
+                region: '=',
+                bracket: '=',
+                outputFilters: '=filters'
             },
             link: link
         };

@@ -4,18 +4,26 @@
             <div class="col-md-4">
                 <h4>Region</h4>
                 <div class="btn-group btn-group-justified">
-                    <a href="#" class="btn btn-default">Left</a>
-                    <a href="#" class="btn btn-default">Right</a>
+                    <a class="btn"
+                       ng-repeat="region in vm.regions"
+                       ng-class="{'btn-success': vm.region == region,
+                                  'btn-default': vm.region != region}"
+                       ng-click="vm.region = vm.regions[$index]">
+                        {{region.display}}
+                    </a>
                 </div>
             </div>
 
             <div class="col-md-8">
                 <h4>Bracket</h4>
                 <div class="btn-group btn-group-justified">
-                    <a href="#" class="btn btn-default">Left</a>
-                    <a href="#" class="btn btn-default">Middle</a>
-                    <a href="#" class="btn btn-default">Right</a>
-                    <a href="#" class="btn btn-default">Right</a>
+                    <a class="btn"
+                       ng-repeat="bracket in vm.brackets"
+                       ng-class="{'btn-success': vm.bracket == bracket,
+                                  'btn-default': vm.bracket != bracket}"
+                       ng-click="vm.bracket = vm.brackets[$index]">
+                        {{bracket.display}}
+                    </a>
                 </div>
             </div>
         </div>
@@ -24,15 +32,20 @@
 
         <div class="row">
             <div class="col-md-12">
-                <a class="btn btn-default btn-block">
-                    Toggle Filters
-                    <span class="pull-right">&#x25bc;</span>
-                    <span class="pull-right">&#x25b2;</span>
+                <a class="btn btn-default btn-block" ng-click="vm.filters.visible = !vm.filters.visible">
+                    <span ng-if="!vm.filters.visible">
+                        Open Filters
+                        <span class="pull-right">&#x25bc;</span>
+                    </span>
+                    <span ng-if="vm.filters.visible">
+                        Close Filters
+                        <span class="pull-right">&#x25b2;</span>
+                    </span>
                 </a>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" ng-show="vm.filters.visible">
             <div class="col-md-12">
                 <h4>Filters</h4>
                 <form>
@@ -233,13 +246,16 @@
                         </div>
                     </div>
 
-
                     <hr>
 
                     <div class="row">
                         <div class="col-md-12">
-                            <a class="btn btn-default">Reset</a>
-                            <a class="btn btn-primary">Filter</a>
+                            <a class="btn btn-default">
+                                Reset
+                            </a>
+                            <intput type="submit" class="btn btn-primary" name="submit">
+                                Filter
+                            </intput>
                         </div>
                     </div>
                 </form>

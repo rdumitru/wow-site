@@ -1,17 +1,19 @@
 <div class="panel panel-default">
-    <div class="panel-body">
-
-    </div>
-</div>
-
-<div class="panel panel-default">
-    <div class="panel-body">
+    <div class="panel-body" ng-init="testFilters = {}; testRegion = {}; testBracket = {}">
         <h4>Europe PvP Rankings</h4>
-        <pvp-filters></pvp-filters>
+        <div class="well">
+            <pre>
+{{testFilters | json}}
+            </pre>
+            <pre>
+{{testRegion | json}}
+            </pre>
+            <pre>
+{{testBracket | json}}
+            </pre>
+        </div>
+        <pvp-filters region="testRegion" bracket="testBracket" filters="testFilters"></pvp-filters>
         <pvp-rankings bracket="vm.globalEnum.bracket.TwoVsTwo" region="vm.globalEnum.region.EU"></pvp-rankings>
-        <pvp-rankings bracket="vm.globalEnum.bracket.ThreeVsThree" region="vm.globalEnum.region.EU"></pvp-rankings>
-        <pvp-rankings bracket="vm.globalEnum.bracket.FiveVsFive" region="vm.globalEnum.region.EU"></pvp-rankings>
-        <pvp-rankings bracket="vm.globalEnum.bracket.Rbg" region="vm.globalEnum.region.EU"></pvp-rankings>
     </div>
 </div>
 
