@@ -1,0 +1,27 @@
+//==============================================================================
+// General elements.
+//==============================================================================
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  // TODO: image is a bit too large, causes low frame rate.
+  background: black url("/assets/img/bg/horde_vs_alliance.jpg") fixed center top;
+  margin: 0 ;
+  padding-top: @navbar-height + @navbar-margin-bottom;  // See nav.
+  // 'padding-bottom' must always be set to the #footer height (see jQuery file).
+}
+
+//==============================================================================
+// Document sections.
+//==============================================================================
+h1, h2, h3, h4, h5, h6 {
+  color: @header-color;
+}

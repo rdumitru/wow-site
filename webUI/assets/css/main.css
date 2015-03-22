@@ -34,6 +34,70 @@
 .progress {
   height: 16px;
 }
+.class-deathknight {
+  color: #c41f3b;
+}
+.class-druid {
+  color: #ff7d0a;
+}
+.class-hunter {
+  color: #abd473;
+}
+.class-mage {
+  color: #69ccf0;
+}
+.class-monk {
+  color: #00ff96;
+}
+.class-paladin {
+  color: #f58cba;
+}
+.class-priest {
+  color: #ffffff;
+}
+.class-rogue {
+  color: #fff569;
+}
+.class-shaman {
+  color: #0070de;
+}
+.class-warlock {
+  color: #9482c9;
+}
+.class-warrior {
+  color: #c79c6e;
+}
+.change-positive {
+  color: #2dd300;
+}
+.change-negative {
+  color: #db0000;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  background: black url("/assets/img/bg/horde_vs_alliance.jpg") fixed center top;
+  margin: 0 ;
+  padding-top: 81px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #d66400;
+}
+.icon img {
+  border: solid 1px #3a302e;
+  box-shadow: 0 0 6px #181818;
+}
 .padding-all {
   padding: 16px;
 }
@@ -121,45 +185,6 @@ th {
   color: #d66400;
   content: "\20\25b4";
 }
-.class-deathknight {
-  color: #c41f3b;
-}
-.class-druid {
-  color: #ff7d0a;
-}
-.class-hunter {
-  color: #abd473;
-}
-.class-mage {
-  color: #69ccf0;
-}
-.class-monk {
-  color: #00ff96;
-}
-.class-paladin {
-  color: #f58cba;
-}
-.class-priest {
-  color: #ffffff;
-}
-.class-rogue {
-  color: #fff569;
-}
-.class-shaman {
-  color: #0070de;
-}
-.class-warlock {
-  color: #9482c9;
-}
-.class-warrior {
-  color: #c79c6e;
-}
-.change-positive {
-  color: #2dd300;
-}
-.change-negative {
-  color: #db0000;
-}
 .pvp-rankings table {
   margin: 0;
 }
@@ -179,29 +204,4 @@ th {
 .pvp-rankings .progress {
   background-color: #808080;
   margin: 21px;
-}
-* {
-  margin: 0;
-  padding: 0;
-}
-html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  background: black url("/assets/img/bg/horde_vs_alliance.jpg") fixed center top;
-  margin: 0 ;
-  padding-top: 81px;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: #d66400;
-}
-.icon img {
-  border: solid 1px #3a302e;
-  box-shadow: 0 0 6px #181818;
 }
