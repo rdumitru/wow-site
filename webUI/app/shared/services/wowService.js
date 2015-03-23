@@ -49,6 +49,7 @@
         var classesKey = 'classes';
         var racesKey = 'races';
         var talentsKey = 'talents';
+        var realmsKey = 'realms';
 
         //=====================================================================
         // Public functions.
@@ -182,6 +183,27 @@
             return bnetRequest(api.route(api.wow.pvp.leaderboard, { bracket: bracket.enumVal }), region);
         }
 
+        function getLiveRealmStatuses(region) {
+            return bnetRequest(api.route(api.wow.realm.status), region);
+        }
+
+        function getOfflineRealmStatuses(region) {
+            var realmsKeyWithRegion = realmsKey + region.enumVal.charAt(0).toUpperCase() + region.enumVal.slice(1).toLowerCase();
+            var realms = cache.load(realmsKeyWithRegion);
+
+            if (realms) {
+                logger.debug(WowService, getOfflineRealmStatuses, 'Retrieving from cache.');
+                return promiseProvider.promiseFromObj(realms);
+            }
+
+            logger.debug(WowService, getOfflineRealmStatuses, 'Calling service.');
+            return bnetRequest(api.route(api.wow.realm.statuses), region)
+                .then(function (response) {
+                    cache.store(realmsKeyWithRegion, response);
+                    return response;
+                });
+        }
+
         //=====================================================================
         // Expose functions.
         //=====================================================================
@@ -192,7 +214,9 @@
             getClass: getClass,
             getRace: getRace,
             getSpec: getSpec,
-            getPvpLeaderboard: getPvpLeaderboard
+            getPvpLeaderboard: getPvpLeaderboard,
+            getLiveRealmStatuses: getLiveRealmStatuses,
+            getOfflineRealmStatuses: getOfflineRealmStatuses
         };
     }
 

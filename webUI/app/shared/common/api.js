@@ -7,18 +7,19 @@
 
     function Api() {
         var prefix = '/api';
-        var wowPrefix = '/wow';
-        var wowDataPrefix = wowPrefix + '/data';
 
         return {
             wow: {
                 data: {
-                    classes: wowDataPrefix + '/character/classes',
-                    races: wowDataPrefix + '/character/races',
-                    talents: wowDataPrefix + '/talents'
+                    classes:    '/wow/data/character/classes',
+                    races:      '/wow/data/character/races',
+                    talents:    '/wow/data/talents'
                 },
                 pvp: {
                     leaderboard: '/wow/leaderboard/:bracket'
+                },
+                realm: {
+                    statuses: '/wow/realm/status'
                 }
             },
             route: route

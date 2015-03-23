@@ -56,13 +56,10 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label class="control-label" for="realmSelect">Realm</label>
-                            <select class="form-control input-sm" id="realmSelect">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <select class="form-control input-sm" id="realmSelect"
+                                    ng-options="realm.name for realm in vm.realms">
                             </select>
+                            {{vm.realms.length}}
                         </div>
                         <div class="form-group col-md-2">
                             <label class="control-label" for="factionSelect">Faction</label>
