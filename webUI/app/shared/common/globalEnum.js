@@ -171,77 +171,77 @@
                     enumVal: 'warrior',
                     display: 'Warrior',
                     blizzId: 1,
-                    specs: [71, 72, 73]
+                    specIds: [71, 72, 73]
                 },
                 Paladin: {
                     mask: Math.pow(2, 1),
                     enumVal: 'paladin',
                     display: 'Paladin',
                     blizzId: 2,
-                    specs: [65, 66, 70]
+                    specIds: [65, 66, 70]
                 },
                 Hunter: {
                     mask: Math.pow(2, 2),
                     enumVal: 'hunter',
                     display: 'Hunter',
                     blizzId: 3,
-                    specs: [253, 254, 255]
+                    specIds: [253, 254, 255]
                 },
                 Rogue: {
                     mask: Math.pow(2, 3),
                     enumVal: 'rogue',
                     display: 'Rogue',
                     blizzId: 4,
-                    specs: [259, 260, 261]
+                    specIds: [259, 260, 261]
                 },
                 Priest: {
                     mask: Math.pow(2, 4),
                     enumVal: 'priest',
                     display: 'Priest',
                     blizzId: 5,
-                    specs: [256, 257, 258]
+                    specIds: [256, 257, 258]
                 },
                 DeathKnight: {
                     mask: Math.pow(2, 5),
                     enumVal: 'deathknight',
                     display: 'Death Knight',
                     blizzId: 6,
-                    specs: [250, 251, 252]
+                    specIds: [250, 251, 252]
                 },
                 Shaman: {
                     mask: Math.pow(2, 6),
                     enumVal: 'shaman',
                     display: 'Shaman',
                     blizzId: 7,
-                    specs: [262, 263, 264]
+                    specIds: [262, 263, 264]
                 },
                 Mage: {
                     mask: Math.pow(2, 7),
                     enumVal: 'mage',
                     display: 'Mage',
                     blizzId: 8,
-                    specs: [62, 63, 64]
+                    specIds: [62, 63, 64]
                 },
                 Warlock: {
                     mask: Math.pow(2, 8),
                     enumVal: 'warlock',
                     display: 'Warlock',
                     blizzId: 9,
-                    specs: [265, 266, 267]
+                    specIds: [265, 266, 267]
                 },
                 Monk: {
                     mask: Math.pow(2, 9),
                     enumVal: 'monk',
                     display: 'Monk',
                     blizzId: 10,
-                    specs: [268, 269, 270]
+                    specIds: [268, 269, 270]
                 },
                 Druid: {
                     mask: Math.pow(2, 10),
                     enumVal: 'druid',
                     display: 'Druid',
                     blizzId: 11,
-                    specs: [102, 103, 104, 105]
+                    specIds: [102, 103, 104, 105]
                 }
             },
 

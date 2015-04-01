@@ -72,7 +72,7 @@
             vm.pageNumber = 1;
             vm.pageSize = vm.optionalPageSize;
             if (!vm.pageSize) {
-                vm.pageSize = 5;
+                vm.pageSize = 10;
             }
 
             // Get the leaderboard.
@@ -110,20 +110,20 @@
             vm.endIndex = Math.min(vm.pageNumber * vm.pageSize, vm.leaderboard.length);
             var leaderboardSlice = vm.leaderboard.slice(vm.startIndex, vm.endIndex);
 
-            _.forEach(leaderboardSlice, function (item) {
+            _.forEach(leaderboardSlice, function (player) {
                 var entry = {
-                    ranking: item.ranking,
-                    name: item.name,
-                    realm: item.realmName,
-                    factionIconLink: iconProvider.factionIconLink(item.factionId, ICON_SIZE),
-                    factionDisplay: item.factionId === 0 ? 'Alliance' : 'Horde',
-                    wins: item.seasonWins,
-                    losses: item.seasonLosses,
-                    rating: item.rating
+                    ranking: player.ranking,
+                    name: player.name,
+                    realm: player.realmName,
+                    factionIconLink: iconProvider.factionIconLink(player.factionId, ICON_SIZE),
+                    factionDisplay: player.factionId === 0 ? 'Alliance' : 'Horde',
+                    wins: player.seasonWins,
+                    losses: player.seasonLosses,
+                    rating: player.rating
                 };
 
                 vm.loadingCount++;
-                wowService.getClass(item.classId)
+                wowService.getClass(player.classId)
                     .then(function (response) {
                         entry.classIconLink = response.data.class.iconLink(ICON_SIZE);
                         entry.classDisplay = response.data.class.name;
@@ -132,7 +132,7 @@
                     });
 
                 vm.loadingCount++;
-                wowService.getRace(item.raceId, item.genderId)
+                wowService.getRace(player.raceId, player.genderId)
                     .then(function (response) {
                         entry.raceIconLink = response.data.race.iconLink(ICON_SIZE);
                         entry.raceDisplay = response.data.race.name;
@@ -140,7 +140,7 @@
                     });
 
                 vm.loadingCount++;
-                wowService.getSpec(item.specId)
+                wowService.getSpec(player.specId)
                     .then(function (response) {
                         entry.specIconLink = response.data.spec.iconLink(ICON_SIZE);
                         entry.specDisplay = response.data.spec.name;

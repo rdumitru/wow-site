@@ -54,11 +54,12 @@
         <div class="row" ng-show="vm.filters.visible">
             <div class="col-md-12">
                 <h4>Filters</h4>
-                <form>
+                <form ng-submit="vm.filter()">
                     <div class="row">
                         <div class="form-group col-md-3">
                             <label class="control-label" for="playerInput">Player</label>
-                            <input type="text" class="form-control input-sm" id="playerInput">
+                            <input type="text" class="form-control input-sm" id="playerInput"
+                                   ng-model="vm.filters.player">
                         </div>
                         <div class="form-group col-md-3">
                             <label class="control-label" for="realmSelect">Realm</label>
@@ -78,11 +79,13 @@
                         </div>
                         <div class="form-group col-md-2">
                             <label class="control-label" for="minRatingInput">Min. Rating</label>
-                            <input type="text" class="form-control input-sm col-md-6" id="minRatingInput">
+                            <input type="text" class="form-control input-sm col-md-6" id="minRatingInput"
+                                   ng-model="vm.filters.minRating" only-digits maxlength="4">
                         </div>
                         <div class="form-group col-md-2">
                             <label class="control-label" for="maxRatingInput">Max. Rating</label>
-                            <input type="text" class="form-control input-sm col-md-6" id="maxRatingInput">
+                            <input type="text" class="form-control input-sm col-md-6" id="maxRatingInput"
+                                   ng-model="vm.filters.maxRating" only-digits maxlength="4">
                         </div>
                     </div>
 
@@ -91,158 +94,36 @@
                             <h4>Specs</h4>
                             <div class="radio-inline">
                                 <label>
-                                    <input type="radio" name="specsRadios" id="allSpecsRadio" value="all"
-                                           ng-model="vm.specsFilter">
+                                    <input type="radio" name="specsRadios" id="allSpecsRadio" ng-value="false"
+                                           ng-model="vm.filters.specs.visible">
                                     Show all talent specs
                                 </label>
                             </div>
                             <div class="radio-inline">
                                 <label>
-                                    <input type="radio" name="specsRadios" id="filterSpecsRadio" value="filter"
-                                           ng-model="vm.specsFilter">
+                                    <input type="radio" name="specsRadios" id="filterSpecsRadio" ng-value="true"
+                                           ng-model="vm.filters.specs.visible">
                                     Filter by talent spec
                                 </label>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row" ng-show="vm.specsFilter === 'filter'">
-                        <div class="col-md-3">
-                            <h5 class="class-hunter">
+                    <div class="row specs" ng-show="vm.filters.specs.visible">
+                        <div class="col-md-3" ng-repeat="classObj in vm.classes">
+                            <h5 ng-class="classObj.class.cssClass" ng-click="vm.toggleSpecs(classObj)">
                                 <span class="icon">
-                                    <img src="http://wow.zamimg.com/images/wow/icons/small/class_hunter.jpg">
+                                    <img ng-src="{{classObj.class.iconLink}}">
                                 </span>
-                                Hunter
+                                {{classObj.class.name}}
                             </h5>
-                            <div class="checkbox">
+                            <div class="checkbox" ng-repeat="spec in classObj.specs">
                                 <label>
-                                    <input type="checkbox">
+                                    <input type="checkbox" ng-model="spec.selected">
                                     <span class="icon">
-                                        <img src="http://wow.zamimg.com/images/wow/icons/small/ability_hunter_camouflage.jpg">
+                                        <img ng-src="{{spec.iconLink}}">
                                     </span>
-                                    Beast Mastery
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                    <span class="icon">
-                                        <img src="http://wow.zamimg.com/images/wow/icons/small/ability_hunter_camouflage.jpg">
-                                    </span>
-                                    Marksmanship
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                    <span class="icon">
-                                        <img src="http://wow.zamimg.com/images/wow/icons/small/ability_hunter_camouflage.jpg">
-                                    </span>
-                                    Survival
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <h5 class="class-hunter">
-                                <span class="icon">
-                                    <img src="http://wow.zamimg.com/images/wow/icons/small/class_hunter.jpg">
-                                </span>
-                                Hunter
-                            </h5>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                    Beast Mastery
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                    Marksmanship
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                    Survival
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <h5 class="class-hunter">
-                                <span class="icon">
-                                    <img src="http://wow.zamimg.com/images/wow/icons/small/class_hunter.jpg">
-                                </span>
-                                Hunter
-                            </h5>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                    Beast Mastery
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                    Marksmanship
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                    Survival
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <h5 class="class-hunter">
-                                <span class="icon">
-                                    <img src="http://wow.zamimg.com/images/wow/icons/small/class_hunter.jpg">
-                                </span>
-                                Hunter
-                            </h5>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                    Beast Mastery
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                    Marksmanship
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                    Survival
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <h5 class="class-hunter">
-                                <span class="icon">
-                                    <img src="http://wow.zamimg.com/images/wow/icons/small/class_hunter.jpg">
-                                </span>
-                                Hunter
-                            </h5>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                    Beast Mastery
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                    Marksmanship
-                                </label>
-                            </div>
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox">
-                                    Survival
+                                    {{spec.name}}
                                 </label>
                             </div>
                         </div>
@@ -252,8 +133,8 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <a class="btn btn-default">
-                                Reset
+                            <a class="btn btn-default" ng-click="vm.clear()">
+                                Clear
                             </a>
                             <intput type="submit" class="btn btn-primary" name="submit">
                                 Filter

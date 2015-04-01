@@ -161,7 +161,7 @@ td {
   vertical-align: baseline;
   white-space: nowrap;
 }
-td img {
+td .icon img {
   vertical-align: text-bottom;
 }
 th {
@@ -204,4 +204,7 @@ th {
 .pvp-rankings .progress {
   background-color: #808080;
   margin: 21px;
+}
+.pvp-filters .specs .icon img {
+  vertical-align: text-top;
 }

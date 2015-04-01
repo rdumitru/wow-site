@@ -160,9 +160,9 @@
             var deferred = $q.defer();
 
             var classObj = _.find(globalEnum.class, function(aClass) {
-                return aClass.specs.indexOf(specBlizzId) >= 0;
+                return aClass.specIds.indexOf(specBlizzId) >= 0;
             });
-            var specIndex = classObj.specs.indexOf(specBlizzId);
+            var specIndex = classObj.specIds.indexOf(specBlizzId);
 
             getTalents()
                 .then(function (response) {
