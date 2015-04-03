@@ -15,10 +15,9 @@
                 return;
             }
 
+            logger.debug(Cache, store, 'Storing object with key: \"' + key + '\".');
             obj.timestamp = moment().toISOString();
             localStorage.setItem(key, JSON.stringify(obj));
-
-            logger.debug(Cache, store, 'Storing object with key: \"' + key + '\".');
         }
 
         function load(key) {
@@ -44,6 +43,7 @@
             var cloneObj = _.clone(obj, true);
             delete cloneObj.timestamp;
 
+            logger.debug(Cache, load, 'Loading key: \"' + key + '\".');
             return cloneObj;
         }
 

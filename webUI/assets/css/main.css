@@ -94,6 +94,9 @@ h5,
 h6 {
   color: #d66400;
 }
+.pointer {
+  cursor: pointer;
+}
 .icon img {
   border: solid 1px #3a302e;
   box-shadow: 0 0 6px #181818;
@@ -205,6 +208,12 @@ th {
   background-color: #808080;
   margin: 21px;
 }
-.pvp-filters .specs .icon img {
+.pvp-filters .specs-header {
+  margin-bottom: 32px;
+}
+.pvp-filters .specs-grid .icon img {
   vertical-align: text-top;
+}
+.pvp-filters .specs-grid .specs-group {
+  min-height: 150px;
 }

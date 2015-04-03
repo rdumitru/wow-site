@@ -89,7 +89,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row specs-header">
                         <div class="col-md-12">
                             <h4>Specs</h4>
                             <div class="radio-inline">
@@ -109,15 +109,15 @@
                         </div>
                     </div>
 
-                    <div class="row specs" ng-show="vm.filters.specs.visible">
-                        <div class="col-md-3" ng-repeat="classObj in vm.classes">
-                            <h5 ng-class="classObj.class.cssClass" ng-click="vm.toggleSpecs(classObj)">
+                    <div class="row specs-grid" ng-show="vm.filters.specs.visible">
+                        <div class="col-md-3 specs-group" ng-repeat="classObj in vm.classes | orderBy: 'class.name'">
+                            <h5 class="pointer" ng-class="classObj.class.cssClass" ng-click="vm.toggleSpecs(classObj)">
                                 <span class="icon">
                                     <img ng-src="{{classObj.class.iconLink}}">
                                 </span>
                                 {{classObj.class.name}}
                             </h5>
-                            <div class="checkbox" ng-repeat="spec in classObj.specs">
+                            <div class="checkbox" ng-repeat="spec in classObj.specs  | orderBy: 'order'">
                                 <label>
                                     <input type="checkbox" ng-model="spec.selected">
                                     <span class="icon">
@@ -133,12 +133,8 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <a class="btn btn-default" ng-click="vm.clear()">
-                                Clear
-                            </a>
-                            <intput type="submit" class="btn btn-primary" name="submit">
-                                Filter
-                            </intput>
+                            <a class="btn btn-default" ng-click="vm.clear(); vm.filter();">Clear</a>
+                            <input type="submit" class="btn btn-primary pull-right" name="submit" value="Filter">
                         </div>
                     </div>
                 </form>

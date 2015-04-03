@@ -40,6 +40,7 @@
                 delete params.callback;
             }
 
+            logger.debug(WowService, bnetRequest, 'Calling service: \"' + path + '\".');
             return $http.jsonp(rootUrl + path, { params: params });
         }
 
@@ -58,11 +59,9 @@
             var classes = cache.load(classesKey);
 
             if (classes) {
-                logger.debug(WowService, getClasses, 'Retrieving from cache.');
                 return promiseProvider.promiseFromObj(classes);
             }
 
-            logger.debug(WowService, getClasses, 'Calling service.');
             return bnetRequest(api.route(api.wow.data.classes))
                 .then(function (response) {
                     cache.store(classesKey, response);
@@ -72,12 +71,11 @@
 
         function getRaces() {
             var races = cache.load(racesKey);
+
             if (races) {
-                logger.debug(WowService, getRaces, 'Retrieving from cache.');
                 return promiseProvider.promiseFromObj(races);
             }
 
-            logger.debug(WowService, getRaces, 'Calling service.');
             return bnetRequest(api.route(api.wow.data.races))
                 .then(function (response) {
                     cache.store(racesKey, response);
@@ -87,12 +85,11 @@
 
         function getTalents() {
             var talents = cache.load(talentsKey);
+
             if (talents) {
-                logger.debug(WowService, getTalents, 'Retrieving from cache.');
                 return promiseProvider.promiseFromObj(talents);
             }
 
-            logger.debug(WowService, getTalents, 'Calling service.');
             return bnetRequest(api.route(api.wow.data.talents))
                 .then(function (response) {
                     cache.store(talentsKey, response);
@@ -192,11 +189,9 @@
             var realms = cache.load(realmsKeyWithRegion);
 
             if (realms) {
-                logger.debug(WowService, getOfflineRealmStatuses, 'Retrieving from cache.');
                 return promiseProvider.promiseFromObj(realms);
             }
 
-            logger.debug(WowService, getOfflineRealmStatuses, 'Calling service.');
             return bnetRequest(api.route(api.wow.realm.statuses), region)
                 .then(function (response) {
                     cache.store(realmsKeyWithRegion, response);

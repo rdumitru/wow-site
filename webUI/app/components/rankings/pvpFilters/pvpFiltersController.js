@@ -44,6 +44,7 @@
             vm.bracket = vm.brackets[0];
 
             // Populate classes and specs list.
+            // TODO: load these only when opening filters.
             vm.classes = [];
             _.forOwn(globalEnum.class, function (classEnumItem) {
                 var newClass = {};
@@ -60,36 +61,37 @@
                     wowService.getSpec(specId)
                         .then(function (response) {
                             var spec = response.data.spec;
+                            spec.id = specId;
                             spec.iconLink = spec.iconLink(globalEnum.iconSize.Small);
                             newClass.specs.push(spec);
                         });
-                })
+                });
             });
 
             // Initialize the filters.
             clear();
-
-            // TODO: set active tabs on hover effect to none.
-            // TODO: set these when button is clicked.
-            vm.outputFilters.test = 'test';
         }
 
         //=====================================================================
         // Exposed functions implementation.
         //=====================================================================
         function toggleSpecs(classObj) {
-            // TODO: this is not working.
-            var sum = _.sum(classObj.specs, function (spec) {
-                return spec.selected ? 1 : 0;
+            var sum = 0;
+            _.forEach(classObj.specs, function (spec) {
+               sum += (spec.selected ? 1 : 0);
             });
 
-            var selectedVal = (sum === classObj.specs.length);
+            var selectedVal = (sum !== classObj.specs.length);
             _.forEach(classObj.specs, function (spec) {
                 spec.selected = selectedVal;
-            })
+            });
+
+            logger.debug(PvpFiltersController, toggleSpecs, 'Setting all specs for \"' + classObj.class.name + '\" to ' + selectedVal + '.');
         }
 
         function clear() {
+            logger.debug(PvpFiltersController, clear, 'Clearing filters...');
+
             vm.filters = {
                 visible: vm.filters ? vm.filters.visible : false,
                 specs: {
@@ -106,7 +108,21 @@
         }
 
         function filter() {
+            logger.debug(PvpFiltersController, filter, 'Filtering...');
+            if (!vm.filters.visible) return;
 
+            vm.filters.specs.ids = [];
+            if (vm.filters.specs.visible) {
+                _.forEach(vm.classes, function (classObj) {
+                    _.forEach(classObj.specs, function (spec) {
+                        if (spec.selected) {
+                            vm.filters.specs.ids.push(spec.id);
+                        }
+                    });
+                });
+            }
+
+            vm.outputFilters = _.clone(vm.filters, true);
         }
     }
 })();

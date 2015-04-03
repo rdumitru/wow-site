@@ -5,16 +5,20 @@
 
     app.config(Configuration);
 
-    Configuration.$inject = ['$logProvider', '$stateProvider', '$urlRouterProvider'];
+    Configuration.$inject = ['$logProvider', '$stateProvider', '$urlRouterProvider', '$locationProvider'];
 
-    function Configuration($logProvider, $stateProvider, $urlRouterProvider) {
+    function Configuration($logProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
         $logProvider.debugEnabled(true);
-
-        $urlRouterProvider.otherwise('/home');
+        $urlRouterProvider.otherwise('/app/home');
+        $locationProvider.html5Mode({
+            enabled: true,
+            requireBase: false
+        });
 
         $stateProvider
             .state('app', {
                 abstract: true,
+                url: '/app',
                 views: {
                     nav: {
                         templateUrl: '/app/shared/app_layout/navTemplate.html',
